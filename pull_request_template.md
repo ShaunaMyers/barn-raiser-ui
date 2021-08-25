@@ -22,7 +22,7 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 
 ## Checklist:
 
-- [ ] My code follows the Turing's guidelines of this project
+- [ ] My code follows Turing's guidelines for this project
 - [ ] I have performed a self-review of my own code
 - [ ] I have generated no new error messages
 - [ ] I have rebased and merged my code
