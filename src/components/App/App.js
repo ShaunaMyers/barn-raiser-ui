@@ -1,4 +1,6 @@
 import './App.css';
+import '../NeedForm/NeedForm';
+import '../NeedList/NeedList';
 
 function App() {
   return (
