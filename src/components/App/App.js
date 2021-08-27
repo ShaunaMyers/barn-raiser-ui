@@ -1,6 +1,6 @@
 import './App.css';
-import '../NeedForm/NeedForm';
-import '../NeedList/NeedList';
+import NeedForm from '../NeedForm/NeedForm';
+import NeedList from '../NeedList/NeedList';
 
 function App() {
   return (
@@ -9,10 +9,11 @@ function App() {
         <h1>BarnRaiser</h1>
       </header>
       <section className="help-questions">
-        <h2>Are You Looking for Assistance?</h2>
+        {/* <h2>Are You Looking for Assistance?</h2>
         <button>I Need Help</button>
         <h3>Can You Offer Assistance?</h3>
-        <button>Give Help</button>
+        <button>Give Help</button> */}
+        <NeedForm />
       </section>
     </main>
   );
