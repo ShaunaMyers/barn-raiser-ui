@@ -15,7 +15,7 @@ export const needsData = { "allActiveNeeds":
       "title": "Event Volunteers",
       "description": "Organizing a charity event to raise money for a family whose house burned down. Need volunteers to set up tables, serve food, run game booths.",
       "start_time": "2021-09-15 15:30:00.000000 -0600",
-      "end_time ": "2021-09-15 19:00:00.000000 -0600",
+      "end_time": "2021-09-15 19:00:00.000000 -0600",
       "zip_code": 80995,
       "requested_supporters": 5 },
      { 
@@ -24,7 +24,7 @@ export const needsData = { "allActiveNeeds":
       "title": "Please Read To Me",
       "description": "Will someone come read to me? I have lost my eyesight. I prefer the classics.",
       "start_time": "2021-10-04 10:00:00.000000 -0600",
-      "end_time ": "2021-10-04 10:00:00.000000 -0600",
+      "end_time": "2021-10-04 10:00:00.000000 -0600",
       "zip_code": 80014,
       "requested_supporters": 1 }
   ]
