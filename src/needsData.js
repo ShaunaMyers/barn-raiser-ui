@@ -1,6 +1,7 @@
 export const needsData = { "allActiveNeeds": 
   [
     { 
+      "id": 156432,
       "point_of_contact": "MargeInTheFlesh@comcast.net",
       "title": "Yard Work",
       "description": "I would like to have my yard raked and my gutters cleaned",
@@ -9,6 +10,7 @@ export const needsData = { "allActiveNeeds":
       "zip_code": 80214,
       "requested_supporters": 2 },
      { 
+      "id": 462346,
       "point_of_contact": "GroverCleveland1234@turing.edu",
       "title": "Event Volunteers",
       "description": "Organizing a charity event to raise money for a family whose house burned down. Need volunteers to set up tables, serve food, run game booths.",
@@ -17,6 +19,7 @@ export const needsData = { "allActiveNeeds":
       "zip_code": 80995,
       "requested_supporters": 5 },
      { 
+      "id": 977322,
       "point_of_contact": "GeorgeElliot4Evuh@gmail.com",
       "title": "Please Read To Me",
       "description": "Will someone come read to me? I have lost my eyesight. I prefer the classics.",
