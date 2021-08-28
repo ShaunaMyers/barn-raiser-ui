@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import NeedForm from '../NeedForm/NeedForm';
 import NeedList from '../NeedList/NeedList';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import { needsData } from '../../needsData';
 
 function App() {
@@ -22,9 +22,13 @@ function App() {
         return (
           <section className="main-container">
             <h2>Are You Looking for Assistance?</h2>
-            <button>I Need Help</button>
+            <Link to="/NeedForm">
+              <button>I Need Help</button>
+            </Link>
             <h3>Can You Offer Assistance?</h3>
-            <button>Give Help</button>
+            <Link to="/NeedList">
+              <button>Give Help</button>
+            </Link>
           </section>
         )
       }}/>
