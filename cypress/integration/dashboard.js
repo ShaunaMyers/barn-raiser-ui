@@ -5,7 +5,7 @@ describe('Barn Raiser Dashboard', () => {
 
   it('should display the correct page upon load', () => {
     cy.get('h1').contains('BarnRaiser').should('be.visible');
-    cy.get('.need-container').should('be.visible');
+    // cy.get('.need-container').should('be.visible');
   });
 
   // it('should allow the user to switch to a view of a form to submit their own request');
