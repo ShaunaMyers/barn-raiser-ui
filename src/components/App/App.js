@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import NeedForm from '../NeedForm/NeedForm';
 import NeedList from '../NeedList/NeedList';
+import { Route } from 'react-router-dom';
 import { needsData } from '../../needsData';
 
 function App() {
@@ -17,14 +18,18 @@ function App() {
       <header>
         <h1>BarnRaiser</h1>
       </header>
-      <section className="main-container">
-        {/* <h2>Are You Looking for Assistance?</h2>
-        <button>I Need Help</button>
-        <h3>Can You Offer Assistance?</h3>
-        <button>Give Help</button> */}
+      <Route exact path="/" render={() => {
+        return (
+          <section className="main-container">
+            <h2>Are You Looking for Assistance?</h2>
+            <button>I Need Help</button>
+            <h3>Can You Offer Assistance?</h3>
+            <button>Give Help</button>
+          </section>
+        )
+      }}/>
         {/* <NeedForm /> */}
         <NeedList needs={needs} />
-      </section>
     </main>
   );
 }
