@@ -16,7 +16,9 @@ function App() {
   return (
     <main>
       <header>
-        <h1>BarnRaiser</h1>
+        <Link to="/">
+          <h1>BarnRaiser</h1>
+        </Link>
       </header>
       <Route exact path="/" render={() => {
         return (
