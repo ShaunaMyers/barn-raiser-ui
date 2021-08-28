@@ -28,8 +28,16 @@ function App() {
           </section>
         )
       }}/>
-        {/* <NeedForm /> */}
-        <NeedList needs={needs} />
+      <Route exact path="/NeedForm" render={() => {
+        return (
+          <NeedForm />
+        )
+      }}/>
+      <Route exact path="/NeedList" render={() => {
+        return (
+          <NeedList needs={needs} />
+        )
+      }}/>
     </main>
   );
 }
