@@ -3,8 +3,7 @@ import './NeedForm.css';
 const NeedForm = () => {
     return ( 
         <form>
-            <input type="text" name="name" placeholder="Name"/>
-            <input type="url" name="email" placeholder="Email Address"/>
+            <input type="email" name="email" placeholder="Email Address"/>
             <input type="text" name="zip-code" placeholder="Zip Code"/>
             <input type="date" name="need-date" min="2021-08-27" max="2025-08-27"/>
             <input type="time" name="start-time"/>
