@@ -1,5 +1,5 @@
 .need-container {
-  color: black;
+  color: #0A0908;
   padding: 5%;
   text-align: center;
   width: 100%;
@@ -9,10 +9,10 @@
   display: flex;
 }
 
-.need-container:nth-child(odd) {
-  background-color: aliceblue;
+.need-container:nth-child(even) {
+  background-color: #F4F3EE;
 }
 
-.need-container:nth-child(even) {
-  background-color: gray;
+.need-container:nth-child(odd) {
+  background-color: #CDCDCB;
 }
