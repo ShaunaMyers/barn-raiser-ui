@@ -12,6 +12,10 @@ import {
   gql
 } from "@apollo/client";
 
+const client = new ApolloClient({
+  uri: 'https://barn-raiser-be.herokuapp.com/graphql',
+  cache: new InMemoryCache()
+});
 
 ReactDOM.render(
   <BrowserRouter>
