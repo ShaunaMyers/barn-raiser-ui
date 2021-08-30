@@ -1,6 +1,17 @@
+import { useState } from 'react';
 import './NeedForm.css';
 
 const NeedForm = () => {
+
+    const [email, setEmail] = useState('')
+    const [zipCode, setZipCode] = useState(0);
+    const [date, setDate] = useState('');
+    const [startTime, setStartTime] = useState('');
+    const [endTime, setEndTime] = useState('');
+    const [volunteers, setVolunteers] = useState(0);
+    const [description, setDescription] = useState('');
+
+
     return ( 
         <form>
             <input type="email" name="email" placeholder="Email Address"/>
