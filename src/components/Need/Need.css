@@ -42,3 +42,26 @@
   padding: 1%;
   width: 33%;
 }
+
+@media only screen and (max-width: 1110px) {
+  .need-container {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .time-container {
+    align-items: center;
+    width: 90%;
+  }
+
+  .need-description-info {
+    align-items: center;
+    width: 90%;
+  }
+
+  .need-volunteer-info {
+    align-items: center;
+    width: 90%;
+  }
+}
