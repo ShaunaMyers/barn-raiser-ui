@@ -1,17 +1,51 @@
+import React, { useState } from 'react';
 import './NeedForm.css';
 
-const NeedForm = () => {
+const NeedForm = ({ addNeed }) => {
+
+    const [pointOfContact, setPointOfContact] = useState('')
+    const [zipCode, setZipCode] = useState(0);
+    const [date, setDate] = useState('');
+    const [startTime, setStartTime] = useState('');
+    const [endTime, setEndTime] = useState('');
+    const [supportersNeeded, setSupportersNeeded] = useState(0);
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        name === 'email' && setPointOfContact(value);
+        name === 'zipCode' && setZipCode(value);
+        name === 'needDate' && setDate(value);
+        name === 'startTime' && setStartTime(value);
+        name === 'endTime' && setEndTime(value);
+        name === 'volunteersNeeded' && setSupportersNeeded(value);
+        name === 'needTitle' && setTitle(value);
+        name === 'needDescription' && setDescription(value);
+    }
+
+    // Still need to write logic for the date and the time 
+        // startTime and endTime are coming in from the backend as strings that include the date
+        // Need to parse the date from startTime and endTime for display
+        // Also need to logic to send back the date included in startTime and endTime
+
+    const handleAddNeed = (e) => {
+        e.preventDefault()
+        addNeed({ id: Math.random(), title, description, pointOfContact, startTime, endTime, zipCode, supportersNeeded })
+    }
+
     return ( 
         <form>
-            <input type="text" name="name" placeholder="Name"/>
-            <input type="url" name="email" placeholder="Email Address"/>
-            <input type="text" name="zip-code" placeholder="Zip Code"/>
-            <input type="date" name="need-date" min="2021-08-27" max="2025-08-27"/>
-            <input type="time" name="start-time"/>
-            <input type="time" name="end-time"/>
-            <input type="number" name="volunteers-needed" min="1" max="100"/>
-            <input type="text" name="need-description" placeholder="Describe your need"/>
-            <button>Submit</button>
+            <input onChange={handleInputChange} type="email" name="email" placeholder="Email Address" value={pointOfContact}/>
+            <input onChange={handleInputChange} type="number" name="zipCode" placeholder="Zip Code" value={zipCode}/>
+            <input onChange={handleInputChange} type="date" name="needDate" min={new Date().toISOString().slice(0,10)} max="2025-08-27"/>
+            <input onChange={handleInputChange} type="time" name="startTime"/>
+            <input onChange={handleInputChange} type="time" name="endTime"/>
+            <input onChange={handleInputChange} type="number" name="volunteersNeeded" min="1" max="100" value={supportersNeeded}/>
+            <input onChange={handleInputChange} type="text" name="needTitle" placeholder="Give your need a title" value={title}/>
+            <input onChange={handleInputChange} type="text" name="needDescription" placeholder="Describe your need" value={description}/>
+            <button onClick={handleAddNeed}>Submit</button>
         </form>
      );
 }
