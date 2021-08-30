@@ -5,12 +5,17 @@ describe('Barn Raiser Dashboard', () => {
 
   it('should display the correct page upon load', () => {
     cy.get('h1').contains('BarnRaiser').should('be.visible');
-    // cy.get('.need-container').should('be.visible');
+    cy.get('h2').contains('Are You Looking for Assistance?').should('be.visible');
+    cy.get('button').contains('I Need Help').should('be.visible');
+    cy.get('h3').contains('Can You Offer Assistance?').should('be.visible');
+    cy.get('button').contains('Give Help').should('be.visible');
   });
 
-  // it('should allow the user to switch to a view of a form to submit their own request');
-  //
-  // it('should display a list of cards corresponding to requests for help');
-  //
-  // it('should show the correct bits of data on each request card');
+  it('should allow the user to switch to a view of a form to submit their own request for help', () => {
+
+  });
+
+  it('should allow the user to switch to a page to view all requests for help', () => {
+
+  });
 });
