@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './NeedForm.css';
 
-const NeedForm = () => {
+const NeedForm = ({ addNeed }) => {
 
     const [email, setEmail] = useState('')
     const [zipCode, setZipCode] = useState(0);
@@ -9,6 +9,7 @@ const NeedForm = () => {
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
     const [volunteers, setVolunteers] = useState(0);
+    const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
 
 
@@ -20,7 +21,12 @@ const NeedForm = () => {
         name === 'startTime' && setStartTime(value);
         name === 'endTime' && setEndTime(value);
         name === 'volunteersNeeded' && setVolunteers(value);
+        name === 'needTitle' && setTitle(value);
         name === 'needDescription' && setDescription(value);
+    }
+
+    const handleAddNeed = () => {
+        addNeed({id: Math.random(), title})
     }
 
     return ( 
@@ -31,8 +37,9 @@ const NeedForm = () => {
             <input onChange={handleInputChange} type="time" name="startTime"/>
             <input onChange={handleInputChange} type="time" name="endTime"/>
             <input onChange={handleInputChange} type="number" name="volunteersNeeded" min="1" max="100" value={volunteers}/>
+            <input onChange={handleInputChange} type="text" name="needTitle" placeholder="Give your need a title" value={title}/>
             <input onChange={handleInputChange} type="text" name="needDescription" placeholder="Describe your need" value={description}/>
-            <button>Submit</button>
+            <button onClick={handleAddNeed}>Submit</button>
         </form>
      );
 }
