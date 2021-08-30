@@ -4,13 +4,7 @@ import './index.css';
 import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  useQuery,
-  gql
-} from "@apollo/client";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 const client = new ApolloClient({
   uri: 'https://barn-raiser-be.herokuapp.com/graphql',
@@ -19,7 +13,9 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <BrowserRouter>
+    <ApolloProvider client={client}>
       <App />
+    </ApolloProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );
