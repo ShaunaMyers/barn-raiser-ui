@@ -31,6 +31,7 @@ const NeedForm = ({ addNeed }) => {
         // Also need to logic to send back the date included in startTime and endTime
 
     const handleAddNeed = () => {
+        e.preventDefault()
         addNeed({ id: Math.random(), title, description, pointOfContact, startTime, endTime, zipCode, supportersNeeded })
     }
 
