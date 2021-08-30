@@ -6,7 +6,7 @@ body {
 }
 
 header {
-  background-color: rgba(122, 157, 150, 0.5);
+  background-color: #CAE4DB;
   padding: 0.5% 1%;
 }
 
@@ -25,8 +25,8 @@ button {
 }
 
 button:hover {
-  background-color: #7A9D96;
-  color: #00303F;
+  background-color: #DCAE1D;
+  color: #000000;
 }
 
 .main-container {
