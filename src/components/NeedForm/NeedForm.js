@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './NeedForm.css';
 
 const NeedForm = () => {
@@ -12,15 +12,20 @@ const NeedForm = () => {
     const [description, setDescription] = useState('');
 
 
+    const handleInputChange = (e) => {
+        e.target.name === 'email' && setEmail(e.target.value);
+        e.target.name === 'zipCode' && setZipCode(e.target.value);
+    }
+
     return ( 
         <form>
-            <input type="email" name="email" placeholder="Email Address"/>
-            <input type="text" name="zip-code" placeholder="Zip Code"/>
-            <input type="date" name="need-date" min={new Date().toISOString().slice(0,10)} max="2025-08-27"/>
-            <input type="time" name="start-time"/>
-            <input type="time" name="end-time"/>
-            <input type="number" name="volunteers-needed" min="1" max="100"/>
-            <input type="text" name="need-description" placeholder="Describe your need"/>
+            <input onChange={handleInputChange} type="email" name="email" placeholder="Email Address" value={email}/>
+            <input onChange={handleInputChange} type="text" name="zipCode" placeholder="Zip Code" value={zipCode}/>
+            <input onChange={handleInputChange} type="date" name="need-date" min={new Date().toISOString().slice(0,10)} max="2025-08-27"/>
+            <input onChange={handleInputChange} type="time" name="start-time"/>
+            <input onChange={handleInputChange} type="time" name="end-time"/>
+            <input onChange={handleInputChange} type="number" name="volunteers-needed" min="1" max="100"/>
+            <input onChange={handleInputChange} type="text" name="need-description" placeholder="Describe your need"/>
             <button>Submit</button>
         </form>
      );
