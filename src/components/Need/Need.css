@@ -1,11 +1,18 @@
 .need-container {
-  background-color: aliceblue;
-  border-radius: 10px;
   color: black;
   padding: 5%;
   text-align: center;
+  width: 100%;
 }
 
 .time-container {
   display: flex;
+}
+
+.need-container:nth-child(odd) {
+  background-color: aliceblue;
+}
+
+.need-container:nth-child(even) {
+  background-color: gray;
 }
