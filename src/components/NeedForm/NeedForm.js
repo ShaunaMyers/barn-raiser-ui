@@ -5,7 +5,7 @@ const NeedForm = () => {
         <form>
             <input type="email" name="email" placeholder="Email Address"/>
             <input type="text" name="zip-code" placeholder="Zip Code"/>
-            <input type="date" name="need-date" min="2021-08-27" max="2025-08-27"/>
+            <input type="date" name="need-date" min={new Date().toISOString().slice(0,10)} max="2025-08-27"/>
             <input type="time" name="start-time"/>
             <input type="time" name="end-time"/>
             <input type="number" name="volunteers-needed" min="1" max="100"/>
