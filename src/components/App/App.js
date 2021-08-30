@@ -13,6 +13,10 @@ function App() {
     setNeeds(needsData.allActiveNeeds)
   }, [])
 
+  const addNeed = (newNeed) => {
+    setNeeds([...needs, newNeed])
+  }
+
   return (
     <main>
       <header>
@@ -36,7 +40,7 @@ function App() {
       }}/>
       <Route exact path="/NeedForm" render={() => {
         return (
-          <NeedForm />
+          <NeedForm addNeed={addNeed}/>
         )
       }}/>
       <Route exact path="/NeedList" render={() => {
