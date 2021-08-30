@@ -25,6 +25,11 @@ const NeedForm = ({ addNeed }) => {
         name === 'needDescription' && setDescription(value);
     }
 
+    // Still need to write logic for the date and the time 
+        // startTime and endTime are coming in from the backend as strings that include the date
+        // Need to parse the date from startTime and endTime for display
+        // Also need to logic to send back the date included in startTime and endTime
+
     const handleAddNeed = () => {
         addNeed({ id: Math.random(), title, description, pointOfContact, startTime, endTime, zipCode, supportersNeeded })
     }
