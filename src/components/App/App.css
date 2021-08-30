@@ -1,19 +1,19 @@
-main {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("https://c.stocksy.com/a/tk2400/z9/963907.jpg");
-  background-position: center;
-  background-size: cover;
-  height: 100vh;
+body {
+  background-color: #F4F3EE;
+  margin: 0;
 }
 
 header {
-  background-color: white;
-  margin: 0;
+  background-color: #F4F3EE;
+}
+
+a {
+  text-decoration: none;
 }
 
 .main-container {
   align-items: center;
-  color: white;
+  color: #000000;
   opacity: 0.8;
   display: flex;
   flex-direction: column;

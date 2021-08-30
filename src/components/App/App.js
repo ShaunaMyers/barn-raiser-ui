@@ -27,14 +27,17 @@ function App() {
       <Route exact path="/" render={() => {
         return (
           <section className="main-container">
-            <h2>Are You Looking for Assistance?</h2>
-            <Link to="/NeedForm">
-              <button>I Need Help</button>
-            </Link>
-            <h3>Can You Offer Assistance?</h3>
-            <Link to="/NeedList">
-              <button>Give Help</button>
-            </Link>
+            <img src="https://c.stocksy.com/a/tk2400/z9/963907.jpg" />
+            <div className="intro-text">
+              <h2>Are You Looking for Assistance?</h2>
+              <Link to="/NeedForm">
+                <button>I Need Help</button>
+              </Link>
+              <h3>Can You Offer Assistance?</h3>
+              <Link to="/NeedList">
+                <button>Give Help</button>
+              </Link>
+            </div>
           </section>
         )
       }}/>
