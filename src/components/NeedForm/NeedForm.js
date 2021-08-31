@@ -82,7 +82,7 @@ const NeedForm = () => {
         <label for="needTitle">Title:</label>
         <input onChange={handleInputChange} type="text" name="needTitle" placeholder="Give your need a title" value={title}/>
         <label for="needDescription">Description:</label>
-        <input onChange={handleInputChange} type="text" name="needDescription" placeholder="Describe your need" value={description} className="description-input"/>
+        <input onChange={handleInputChange} type="text" name="needDescription" placeholder="Describe your need" value={description} />
         <button onClick={handleAddNeed} className="submit-button">Submit</button>
       </form>
     );
