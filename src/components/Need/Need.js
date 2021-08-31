@@ -6,16 +6,19 @@ const Need = ({ pointOfContact, title, description, startTime, endTime, zipCode,
     <div className="need-container">
       <div className="need-description-info">
         <h4>{title}</h4>
+        <p className="bold">Details:</p>
         <p>{description}</p>
-        <p>{zipCode}</p>
+        <p className="bold">{zipCode}</p>
       </div>
       <div className="time-container">
-        <p>{startTime}-</p>
+        <p>{startTime} -- </p>
         <p>{endTime}</p>
       </div>
       <div className="need-volunteer-info">
-        <p>Volunteers needed: {supporters}</p>
-        <p>Contact: {pointOfContact}</p>
+        <p className="bold">Volunteers Needed:</p>
+        <p>{supporters}</p>
+        <p className="bold">Contact:</p>
+        <p>{pointOfContact}</p>
       </div>
     </div>
    );
