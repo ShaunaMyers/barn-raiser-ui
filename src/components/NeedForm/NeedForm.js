@@ -1,7 +1,28 @@
 import React, { useState } from 'react';
+import { gql, useMutation } from '@apollo/client';
 import './NeedForm.css';
 
-const NeedForm = ({ addNeed }) => {
+const ADD_NEED = gql`
+    mutation createNeed($pointOfContact: String!, $title: String!, $description: String!, $startTime: String!, $endTime: String!, $zipCode: String!, $supportersNeeded: Int!) {
+
+        createNeed( input: { pointOfContact: $pointOfContact, title: $title, description: $description, startTime: $startTime, endTime: $endTime, zipCode: $zipCode, supportersNeeded: $supportersNeeded }) {
+        need {
+            id
+            title
+            description  
+            pointOfContact
+            startTime 
+            endTime 
+            zipCode 
+            supportersNeeded 
+            status
+          }
+      errors
+      }
+    }
+`;
+
+const NeedForm = () => {
 
     const [pointOfContact, setPointOfContact] = useState('')
     const [zipCode, setZipCode] = useState(0);
@@ -12,6 +33,11 @@ const NeedForm = ({ addNeed }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
 
+    const [addNeed, { data, loading, error }] = useMutation(ADD_NEED);
+
+    if (loading) return 'Loading...';
+    if (error) return `Submission error! ${error.message}`;
+
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -20,9 +46,10 @@ const NeedForm = ({ addNeed }) => {
         name === 'needDate' && setDate(value);
         name === 'startTime' && setStartTime(value);
         name === 'endTime' && setEndTime(value);
-        name === 'volunteersNeeded' && setSupportersNeeded(value);
+        name === 'volunteersNeeded' && setSupportersNeeded(parseInt(value));
         name === 'needTitle' && setTitle(value);
         name === 'needDescription' && setDescription(value);
+
     }
 
     // Still need to write logic for the date and the time 
@@ -32,7 +59,9 @@ const NeedForm = ({ addNeed }) => {
 
     const handleAddNeed = (e) => {
         e.preventDefault()
-        addNeed({ id: Math.random(), title, description, pointOfContact, startTime, endTime, zipCode, supportersNeeded })
+        // addNeed({ id: Math.random(), title, description, pointOfContact, startTime, endTime, zipCode, supportersNeeded })
+        addNeed({ variables: { pointOfContact, title, description, startTime, endTime, zipCode, supportersNeeded } })
+
     }
 
     return ( 
