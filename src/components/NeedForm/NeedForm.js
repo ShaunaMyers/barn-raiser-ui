@@ -3,6 +3,8 @@ import { gql, useMutation } from '@apollo/client';
 import './NeedForm.css';
 import { NEEDS_QUERY } from '../App/App';
 
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
+
 const ADD_NEED = gql`
     mutation createNeed($pointOfContact: String!, $title: String!, $description: String!, $startTime: String!, $endTime: String!, $zipCode: String!, $supportersNeeded: Int!) {
 
@@ -34,6 +36,7 @@ const NeedForm = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [errorMessage, setErrorMessage] = useState({});
+    const [isError, setIsError] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     const [addNeed, { loading, error }] = useMutation(ADD_NEED, {
@@ -83,9 +86,13 @@ const NeedForm = () => {
 
     const handleAddNeed = (e) => {
       e.preventDefault()
+      setIsError(false)
+      setIsSubmitted(false)
+      //clear inputs as well
       const newNeed = { variables: { pointOfContact, title, description, startTime, endTime, zipCode, supportersNeeded } };
       const isThereAnError = checkUserInput(newNeed)
       if (isThereAnError) {
+        setIsError(true);
         return false;
       } else {
         addNeed(newNeed);
@@ -119,9 +126,9 @@ const NeedForm = () => {
         <label for="needDescription">Description:</label>
         <input onChange={handleInputChange} type="text" name="needDescription" id="needDescription" placeholder="Describe your need" value={description} />
         {/* conditional -- if errorMessage.needDescription, render error message*/}
+        {!!isError && <ErrorMessage errorMessage="Warning: Your submission could not go through." />}
+        {!!isSubmitted && <h3 className="success-message">Success! Your submission has been recorded.</h3>}
         <button onClick={handleAddNeed} className="submit-button">Submit</button>
-        {/* conditional -- if isError, render error message*/}
-        {/* conditional -- if isSubmitted, render success message*/}
       </form>
     );
 }
