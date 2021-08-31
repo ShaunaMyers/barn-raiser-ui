@@ -26,7 +26,7 @@ const ADD_NEED = gql`
 const NeedForm = () => {
 
     const [pointOfContact, setPointOfContact] = useState('')
-    const [zipCode, setZipCode] = useState(0);
+    const [zipCode, setZipCode] = useState('');
     const [date, setDate] = useState('');
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
@@ -71,9 +71,7 @@ const NeedForm = () => {
         <label for="email">Contact Email:</label>
         <input onChange={handleInputChange} type="email" name="email" id="email" placeholder="Email Address" value={pointOfContact}/>
         <label for="zipCode">Zip Code:</label>
-        {//should probably be a text input
-        }
-        <input onChange={handleInputChange} type="number" name="zipCode" id="zipCode" placeholder="Zip Code" value={zipCode}/>
+        <input onChange={handleInputChange} type="text" name="zipCode" id="zipCode" placeholder="Zip Code" value={zipCode}/>
         <label for="needDate">Date:</label>
         <input onChange={handleInputChange} type="date" name="needDate" id="needDate" min={new Date().toISOString().slice(0,10)} max="2025-08-27"/>
         <label for="startTime">Start Time:</label>
