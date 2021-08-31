@@ -1,9 +1,7 @@
-// import { useState, useEffect } from 'react';
 import './App.css';
 import NeedForm from '../NeedForm/NeedForm';
 import NeedList from '../NeedList/NeedList';
 import { Route, Link } from 'react-router-dom';
-// import { needsData } from '../../needsData';
 import { useQuery, gql } from '@apollo/client';
 
 function App() {
