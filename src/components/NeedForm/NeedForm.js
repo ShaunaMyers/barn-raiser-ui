@@ -33,6 +33,7 @@ const NeedForm = () => {
     const [supportersNeeded, setSupportersNeeded] = useState(0);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    const [errorMessage, setErrorMessage] = useState({});
 
     const [addNeed, { loading, error }] = useMutation(ADD_NEED, {
         refetchQueries: [{ query: NEEDS_QUERY }],
@@ -60,30 +61,55 @@ const NeedForm = () => {
         // Need to parse the date from startTime and endTime for display
         // Also need to logic to send back the date included in startTime and endTime
 
+    const checkUserInput = ({variables}) => {
+      //check that none are empty
+      //check zip code is 5 nums
+      // check end time is not before start time
+      const needKeys = Object.keys(variables)
+      console.log(needKeys)
+      needKeys.forEach((key) => {
+        if (!variables[key]) {
+          return false;
+        }
+      })
+    }
+
     const handleAddNeed = (e) => {
       e.preventDefault()
-      addNeed({ variables: { pointOfContact, title, description, startTime, endTime, zipCode, supportersNeeded } })
-
+      const newNeed = { variables: { pointOfContact, title, description, startTime, endTime, zipCode, supportersNeeded } };
+      if (!checkUserInput(newNeed)) {
+        return
+      } else {
+        addNeed(newNeed)
+      }
     }
 
     return (
       <form>
         <label for="email">Contact Email:</label>
         <input onChange={handleInputChange} type="email" name="email" id="email" placeholder="Email Address" value={pointOfContact}/>
+        {/* conditional -- if errorMessage.email, render error message*/}
         <label for="zipCode">Zip Code:</label>
         <input onChange={handleInputChange} type="text" name="zipCode" id="zipCode" placeholder="Zip Code" value={zipCode}/>
+        {/* conditional -- if errorMessage.zipCode, render error message*/}
         <label for="needDate">Date:</label>
         <input onChange={handleInputChange} type="date" name="needDate" id="needDate" min={new Date().toISOString().slice(0,10)} max="2025-08-27"/>
+        {/* conditional -- if errorMessage.needDate, render error message*/}
         <label for="startTime">Start Time:</label>
         <input onChange={handleInputChange} type="time" name="startTime" id="startTime"/>
+        {/* conditional -- if errorMessage.startTime, render error message*/}
         <label for="endTime">End Time:</label>
         <input onChange={handleInputChange} type="time" name="endTime" id="endTime"/>
+        {/* conditional -- if errorMessage.endTime, render error message*/}
         <label for="volunteersNeeded">Number of Volunteers Needed:</label>
         <input onChange={handleInputChange} type="number" name="volunteersNeeded" id="volunteersNeeded" min="1" max="100" value={supportersNeeded}/>
+        {/* conditional -- if errorMessage.volunteersNeeded, render error message*/}
         <label for="needTitle">Title:</label>
         <input onChange={handleInputChange} type="text" name="needTitle" id="needTitle" placeholder="Give your need a title" value={title}/>
+        {/* conditional -- if errorMessage.needTitle, render error message*/}
         <label for="needDescription">Description:</label>
         <input onChange={handleInputChange} type="text" name="needDescription" id="needDescription" placeholder="Describe your need" value={description} />
+        {/* conditional -- if errorMessage.needDescription, render error message*/}
         <button onClick={handleAddNeed} className="submit-button">Submit</button>
       </form>
     );
