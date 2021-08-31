@@ -8,16 +8,6 @@ import { useQuery, gql } from '@apollo/client';
 
 function App() {
 
-  // const [ needs, setNeeds ] = useState([])
-
-  // useEffect(() => {
-  //   setNeeds(needsData.allActiveNeeds)
-  // }, [])
-
-  // const addNeed = (newNeed) => {
-  //   setNeeds([...needs, newNeed])
-  // }
-
   const allActiveNeedsQuery = gql`{
     allActiveNeeds{
       id
@@ -45,7 +35,6 @@ function App() {
   } else {
     console.log('data', data)
     return (
-      // <ApolloProvider client={client}>
         <main>
           <header>
             <Link to="/">
@@ -77,7 +66,6 @@ function App() {
               )
             }}/>
         </main>
-      // </ApolloProvider>
     );
   }
 }
