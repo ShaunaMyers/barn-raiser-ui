@@ -63,9 +63,7 @@ const NeedForm = () => {
         // Also need to logic to send back the date included in startTime and endTime
 
     const checkUserInput = ({variables}) => {
-      // check end time is not before start time
       const needKeys = Object.keys(variables)
-      console.log(needKeys)
       let error = false;
       needKeys.forEach((key) => {
         if (!variables[key]) {
@@ -73,10 +71,11 @@ const NeedForm = () => {
           return;
         } else if (key === "zipCode") {
           if (variables[key].length !== 5) {
-            console.log('failed here');
             error = true
             return;
           }
+        } else if (key === "endTime") {
+          // check end time is not before start time
         }
       })
       return error;
