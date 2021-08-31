@@ -7,7 +7,7 @@ const NeedList = ({ needs }) => {
         return <Need key={need.id} id={need.id} pointOfContact={need.pointOfContact} title={need.title} description={need.description} startTime={need.startTime} endTime={need.endTime} zipCode={need.zipCode} supporters={need.supportersNeeded}/>
     })
 
-    return ( 
+    return (
         <article>
             <div className="all-needs">
                 {allNeeds}
@@ -15,5 +15,5 @@ const NeedList = ({ needs }) => {
         </article>
      );
 }
- 
+
 export default NeedList;

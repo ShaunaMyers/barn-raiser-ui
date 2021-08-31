@@ -1,21 +1,75 @@
-main {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("https://c.stocksy.com/a/tk2400/z9/963907.jpg");
-  background-position: center;
-  background-size: cover;
-  height: 100vh;
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+body {
+  background-color: #FFFFFF;
+  font-family: 'Lato', sans-serif;
+  margin: 0;
 }
 
 header {
-  background-color: white;
-  margin: 0;
+  background-color: #CAE4DB;
+  padding: 0.5% 1%;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+  background-color: #00303F;
+  color: #FFFFFF;
+  font-size: 1em;
+  padding: 5%;
+  width: 200px;
+}
+
+button:hover {
+  background-color: #DCAE1D;
+  color: #000000;
 }
 
 .main-container {
   align-items: center;
-  color: white;
+  color: #0A0908;
   opacity: 0.8;
   display: flex;
   flex-direction: column;
-  margin-top: 20%;
+  position: relative;
+}
+
+.logo {
+  color: #00303F;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.logo:hover {
+  color: #7A9D96;
+}
+
+.header-text {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.intro-text {
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+  padding: 5% 0%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
+}
+
+.banner-img {
+  min-height: 100%;
+  width: 100%;
+  position: fixed;
+  object-fit: cover;
+  overflow: hidden;
 }

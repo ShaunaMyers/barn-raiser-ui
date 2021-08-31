@@ -10,11 +10,11 @@ function App() {
     allActiveNeeds{
       id
       title
-      description  
+      description
       pointOfContact
-      startTime 
-      endTime 
-      zipCode 
+      startTime
+      endTime
+      zipCode
       supportersNeeded
       status
     }
@@ -36,20 +36,23 @@ function App() {
         <main>
           <header>
             <Link to="/">
-              <h1>BarnRaiser</h1>
+              <h1 className="logo">BarnRaiser</h1>
             </Link>
           </header>
           <Route exact path="/" render={() => {
             return (
               <section className="main-container">
-                <h2>Are You Looking for Assistance?</h2>
-                <Link to="/NeedForm">
-                  <button>I Need Help</button>
-                </Link>
-                <h3>Can You Offer Assistance?</h3>
-                <Link to="/NeedList">
-                  <button>Give Help</button>
-                </Link>
+                <img src="https://c.stocksy.com/a/tk2400/z9/963907.jpg" className="banner-img" alt="Two hands reaching out towards one another" />
+                <div className="intro-text">
+                  <h2 className="header-text">Are You Looking for Assistance?</h2>
+                  <Link to="/NeedForm">
+                    <button>I Need Help</button>
+                  </Link>
+                  <h3 className="header-text">Can You Offer Assistance?</h3>
+                  <Link to="/NeedList">
+                    <button>Give Help</button>
+                  </Link>
+                </div>
               </section>
             )
           }}/>

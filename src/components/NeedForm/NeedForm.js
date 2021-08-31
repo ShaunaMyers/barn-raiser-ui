@@ -9,12 +9,12 @@ const ADD_NEED = gql`
         need {
             id
             title
-            description  
+            description
             pointOfContact
-            startTime 
-            endTime 
-            zipCode 
-            supportersNeeded 
+            startTime
+            endTime
+            zipCode
+            supportersNeeded
             status
           }
       errors
@@ -40,42 +40,52 @@ const NeedForm = () => {
 
 
     const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        name === 'email' && setPointOfContact(value);
-        name === 'zipCode' && setZipCode(value);
-        name === 'needDate' && setDate(value);
-        name === 'startTime' && setStartTime(value);
-        name === 'endTime' && setEndTime(value);
-        name === 'volunteersNeeded' && setSupportersNeeded(parseInt(value));
-        name === 'needTitle' && setTitle(value);
-        name === 'needDescription' && setDescription(value);
+      const { name, value } = e.target;
+      name === 'email' && setPointOfContact(value);
+      name === 'zipCode' && setZipCode(value);
+      name === 'needDate' && setDate(value);
+      name === 'startTime' && setStartTime(value);
+      name === 'endTime' && setEndTime(value);
+      name === 'volunteersNeeded' && setSupportersNeeded(parseInt(value));
+      name === 'needTitle' && setTitle(value);
+      name === 'needDescription' && setDescription(value);
 
     }
 
-    // Still need to write logic for the date and the time 
+    // Still need to write logic for the date and the time
         // startTime and endTime are coming in from the backend as strings that include the date
         // Need to parse the date from startTime and endTime for display
         // Also need to logic to send back the date included in startTime and endTime
 
     const handleAddNeed = (e) => {
-        e.preventDefault()
-        addNeed({ variables: { pointOfContact, title, description, startTime, endTime, zipCode, supportersNeeded } })
+      e.preventDefault()
+      addNeed({ variables: { pointOfContact, title, description, startTime, endTime, zipCode, supportersNeeded } })
 
     }
 
-    return ( 
-        <form>
-            <input onChange={handleInputChange} type="email" name="email" placeholder="Email Address" value={pointOfContact}/>
-            <input onChange={handleInputChange} type="number" name="zipCode" placeholder="Zip Code" value={zipCode}/>
-            <input onChange={handleInputChange} type="date" name="needDate" min={new Date().toISOString().slice(0,10)} max="2025-08-27"/>
-            <input onChange={handleInputChange} type="time" name="startTime"/>
-            <input onChange={handleInputChange} type="time" name="endTime"/>
-            <input onChange={handleInputChange} type="number" name="volunteersNeeded" min="1" max="100" value={supportersNeeded}/>
-            <input onChange={handleInputChange} type="text" name="needTitle" placeholder="Give your need a title" value={title}/>
-            <input onChange={handleInputChange} type="text" name="needDescription" placeholder="Describe your need" value={description}/>
-            <button onClick={handleAddNeed}>Submit</button>
-        </form>
-     );
+    return (
+      <form>
+        <label for="email">Contact Email:</label>
+        <input onChange={handleInputChange} type="email" name="email" placeholder="Email Address" value={pointOfContact}/>
+        <label for="zipCode">Zip Code:</label>
+        {//should probably be a text input
+        }
+        <input onChange={handleInputChange} type="number" name="zipCode" placeholder="Zip Code" value={zipCode}/>
+        <label for="needDate">Date:</label>
+        <input onChange={handleInputChange} type="date" name="needDate" min={new Date().toISOString().slice(0,10)} max="2025-08-27"/>
+        <label for="startTime">Start Time:</label>
+        <input onChange={handleInputChange} type="time" name="startTime"/>
+        <label for="endTime">End Time:</label>
+        <input onChange={handleInputChange} type="time" name="endTime"/>
+        <label for="volunteersNeeded">Number of Volunteers Needed:</label>
+        <input onChange={handleInputChange} type="number" name="volunteersNeeded" min="1" max="100" value={supportersNeeded}/>
+        <label for="needTitle">Title:</label>
+        <input onChange={handleInputChange} type="text" name="needTitle" placeholder="Give your need a title" value={title}/>
+        <label for="needDescription">Description:</label>
+        <input onChange={handleInputChange} type="text" name="needDescription" placeholder="Describe your need" value={description} />
+        <button onClick={handleAddNeed} className="submit-button">Submit</button>
+      </form>
+    );
 }
- 
+
 export default NeedForm;
