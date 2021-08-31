@@ -34,6 +34,7 @@ const NeedForm = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [errorMessage, setErrorMessage] = useState({});
+    const [isError, setIsError] = useState(false);
 
     const [addNeed, { loading, error }] = useMutation(ADD_NEED, {
         refetchQueries: [{ query: NEEDS_QUERY }],
@@ -69,7 +70,7 @@ const NeedForm = () => {
       console.log(needKeys)
       needKeys.forEach((key) => {
         if (!variables[key]) {
-          return false;
+          setIsError(true);
         }
       })
     }
@@ -77,10 +78,11 @@ const NeedForm = () => {
     const handleAddNeed = (e) => {
       e.preventDefault()
       const newNeed = { variables: { pointOfContact, title, description, startTime, endTime, zipCode, supportersNeeded } };
-      if (!checkUserInput(newNeed)) {
-        return
+      checkUserInput(newNeed)
+      if (isError) {
+        return false;
       } else {
-        addNeed(newNeed)
+        addNeed(newNeed);
       }
     }
 
