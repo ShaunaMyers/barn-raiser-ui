@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { gql, useMutation } from '@apollo/client';
 import './NeedForm.css';
+import { NEEDS_QUERY } from '../App/App';
 
 const ADD_NEED = gql`
     mutation createNeed($pointOfContact: String!, $title: String!, $description: String!, $startTime: String!, $endTime: String!, $zipCode: String!, $supportersNeeded: Int!) {
@@ -33,7 +34,9 @@ const NeedForm = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
 
-    const [addNeed, { data, loading, error }] = useMutation(ADD_NEED);
+    const [addNeed, { loading, error }] = useMutation(ADD_NEED, {
+        refetchQueries: [{ query: NEEDS_QUERY }],
+    });
 
     if (loading) return 'Loading...';
     if (error) return `Submission error! ${error.message}`;
