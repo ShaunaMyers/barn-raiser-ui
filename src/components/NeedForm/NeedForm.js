@@ -59,7 +59,6 @@ const NeedForm = () => {
 
     const handleAddNeed = (e) => {
         e.preventDefault()
-        // addNeed({ id: Math.random(), title, description, pointOfContact, startTime, endTime, zipCode, supportersNeeded })
         addNeed({ variables: { pointOfContact, title, description, startTime, endTime, zipCode, supportersNeeded } })
 
     }
