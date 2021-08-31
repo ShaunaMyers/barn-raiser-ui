@@ -4,23 +4,24 @@ import NeedList from '../NeedList/NeedList';
 import { Route, Link } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 
+export const NEEDS_QUERY = gql`{
+  allActiveNeeds{
+    id
+    title
+    description
+    pointOfContact
+    startTime
+    endTime
+    zipCode
+    supportersNeeded
+    status
+  }
+}`;
+
 function App() {
 
-  const allActiveNeedsQuery = gql`{
-    allActiveNeeds{
-      id
-      title
-      description
-      pointOfContact
-      startTime
-      endTime
-      zipCode
-      supportersNeeded
-      status
-    }
-  }`;
 
-  const { loading, error, data } = useQuery(allActiveNeedsQuery);
+  const { loading, error, data } = useQuery(NEEDS_QUERY);
 
   if (loading) {
     return(
