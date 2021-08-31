@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { gql, useMutation } from '@apollo/client';
 import './NeedForm.css';
 import { NEEDS_QUERY } from '../App/App';
@@ -84,11 +85,21 @@ const NeedForm = () => {
       return error;
     }
 
+    const clearInputs = () => {
+      setPointOfContact('')
+      setZipCode('')
+      setDate('')
+      setStartTime('')
+      setEndTime('')
+      setSupportersNeeded(0)
+      setTitle('')
+      setDescription('')
+    }
+
     const handleAddNeed = (e) => {
       e.preventDefault()
       setIsError(false)
       setIsSubmitted(false)
-      //clear inputs as well
       const newNeed = { variables: { pointOfContact, title, description, startTime, endTime, zipCode, supportersNeeded } };
       const isThereAnError = checkUserInput(newNeed)
       if (isThereAnError) {
@@ -97,11 +108,13 @@ const NeedForm = () => {
       } else {
         addNeed(newNeed);
         setIsSubmitted(true);
+        clearInputs();
       }
     }
 
     return (
       <form>
+        {!!isSubmitted && <h3 className="success-message">Success! Your submission has been recorded. <Link to="/NeedList">Take me there.</Link></h3>}
         <label for="email">Contact Email:</label>
         <input onChange={handleInputChange} type="email" name="email" id="email" placeholder="Email Address" value={pointOfContact}/>
         {/* conditional -- if errorMessage.email, render error message*/}
@@ -127,7 +140,6 @@ const NeedForm = () => {
         <input onChange={handleInputChange} type="text" name="needDescription" id="needDescription" placeholder="Describe your need" value={description} />
         {/* conditional -- if errorMessage.needDescription, render error message*/}
         {!!isError && <ErrorMessage errorMessage="Warning: Your submission could not go through." />}
-        {!!isSubmitted && <h3 className="success-message">Success! Your submission has been recorded.</h3>}
         <button onClick={handleAddNeed} className="submit-button">Submit</button>
       </form>
     );
