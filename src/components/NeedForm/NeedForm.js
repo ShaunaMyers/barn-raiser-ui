@@ -34,7 +34,7 @@ const NeedForm = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [errorMessage, setErrorMessage] = useState({});
-    const [isError, setIsError] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     const [addNeed, { loading, error }] = useMutation(ADD_NEED, {
         refetchQueries: [{ query: NEEDS_QUERY }],
@@ -63,26 +63,34 @@ const NeedForm = () => {
         // Also need to logic to send back the date included in startTime and endTime
 
     const checkUserInput = ({variables}) => {
-      //check that none are empty
-      //check zip code is 5 nums
       // check end time is not before start time
       const needKeys = Object.keys(variables)
       console.log(needKeys)
+      let error = false;
       needKeys.forEach((key) => {
         if (!variables[key]) {
-          setIsError(true);
+          error = true;
+          return;
+        } else if (key === "zipCode") {
+          if (variables[key].length !== 5) {
+            console.log('failed here');
+            error = true
+            return;
+          }
         }
       })
+      return error;
     }
 
     const handleAddNeed = (e) => {
       e.preventDefault()
       const newNeed = { variables: { pointOfContact, title, description, startTime, endTime, zipCode, supportersNeeded } };
-      checkUserInput(newNeed)
-      if (isError) {
+      const isThereAnError = checkUserInput(newNeed)
+      if (isThereAnError) {
         return false;
       } else {
         addNeed(newNeed);
+        setIsSubmitted(true);
       }
     }
 
@@ -113,6 +121,8 @@ const NeedForm = () => {
         <input onChange={handleInputChange} type="text" name="needDescription" id="needDescription" placeholder="Describe your need" value={description} />
         {/* conditional -- if errorMessage.needDescription, render error message*/}
         <button onClick={handleAddNeed} className="submit-button">Submit</button>
+        {/* conditional -- if isError, render error message*/}
+        {/* conditional -- if isSubmitted, render success message*/}
       </form>
     );
 }
