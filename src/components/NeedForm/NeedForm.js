@@ -69,23 +69,23 @@ const NeedForm = () => {
     return (
       <form>
         <label for="email">Contact Email:</label>
-        <input onChange={handleInputChange} type="email" name="email" placeholder="Email Address" value={pointOfContact}/>
+        <input onChange={handleInputChange} type="email" name="email" id="email" placeholder="Email Address" value={pointOfContact}/>
         <label for="zipCode">Zip Code:</label>
         {//should probably be a text input
         }
-        <input onChange={handleInputChange} type="number" name="zipCode" placeholder="Zip Code" value={zipCode}/>
+        <input onChange={handleInputChange} type="number" name="zipCode" id="zipCode" placeholder="Zip Code" value={zipCode}/>
         <label for="needDate">Date:</label>
-        <input onChange={handleInputChange} type="date" name="needDate" min={new Date().toISOString().slice(0,10)} max="2025-08-27"/>
+        <input onChange={handleInputChange} type="date" name="needDate" id="needDate" min={new Date().toISOString().slice(0,10)} max="2025-08-27"/>
         <label for="startTime">Start Time:</label>
-        <input onChange={handleInputChange} type="time" name="startTime"/>
+        <input onChange={handleInputChange} type="time" name="startTime" id="startTime"/>
         <label for="endTime">End Time:</label>
-        <input onChange={handleInputChange} type="time" name="endTime"/>
+        <input onChange={handleInputChange} type="time" name="endTime" id="endTime"/>
         <label for="volunteersNeeded">Number of Volunteers Needed:</label>
-        <input onChange={handleInputChange} type="number" name="volunteersNeeded" min="1" max="100" value={supportersNeeded}/>
+        <input onChange={handleInputChange} type="number" name="volunteersNeeded" id="volunteersNeeded" min="1" max="100" value={supportersNeeded}/>
         <label for="needTitle">Title:</label>
-        <input onChange={handleInputChange} type="text" name="needTitle" placeholder="Give your need a title" value={title}/>
+        <input onChange={handleInputChange} type="text" name="needTitle" id="needTitle" placeholder="Give your need a title" value={title}/>
         <label for="needDescription">Description:</label>
-        <input onChange={handleInputChange} type="text" name="needDescription" placeholder="Describe your need" value={description} />
+        <input onChange={handleInputChange} type="text" name="needDescription" id="needDescription" placeholder="Describe your need" value={description} />
         <button onClick={handleAddNeed} className="submit-button">Submit</button>
       </form>
     );
