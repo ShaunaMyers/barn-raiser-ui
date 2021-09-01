@@ -73,6 +73,10 @@ const NeedForm = () => {
             return;
           }
         } else if (key === "endTime") {
+            if (endTime < startTime) {
+                error = true;
+                return;
+            } 
         }
       })
       return error;
