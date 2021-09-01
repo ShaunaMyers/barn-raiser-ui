@@ -39,8 +39,8 @@ function App() {
           <header>
             <Link to="/">
               <h1 className="logo">BarnRaiser</h1>
-              <Search />
             </Link>
+            <Search />  
           </header>
           <Route exact path="/" render={() => {
             return (
