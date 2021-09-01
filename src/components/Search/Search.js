@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Route } from 'react-router-dom';
+// import { Route } from 'react-router-dom';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import './Search.css';
 
 const Search = () => {
@@ -7,20 +8,21 @@ const Search = () => {
     const [zipCodeBox, setZipCodeBox] = useState(false);
     const [dateBox, setDateBox] = useState(false);
     const [searchInput, setSearchInput] = useState('');
-    const [isError, setIsError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
-    const onSearchSubmit = () => {
+    const onSearchSubmit = (e) => {
         e.preventDefault();
-        // Check if checked1 or 2 have value
-        // AND check if searchInput has value
-        // If so, pass checkBox and searchData up to App
+        setErrorMessage('');
         // If not use Error component to display a message 
         if (searchInput && zipCodeBox) {
-            handleSearchSubmit(searchInput, 'zipCode');
+            // handleSearchSubmit(searchInput, 'zipCode');
         } else if (searchInput && dateBox) {
-            handleSearchSubmit(searchInput, 'date');
+            // handleSearchSubmit(searchInput, 'date');
+        } else if (!zipCodeBox && !dateBox){
+            // setIsError(true)
+            setErrorMessage('Please check a box to complete your search')
         } else {
-            setIsError(true)
+            setErrorMessage('Please enter text to complete your search')
         }
     }
 
@@ -46,6 +48,9 @@ const Search = () => {
                             <label for="dateBox">Date</label>
                     </div>
                 <button onClick={onSearchSubmit} className="search-button">Search</button>
+                {errorMessage &&
+                    <ErrorMessage errorMessage={errorMessage}/>
+                }
             </form>
         //     )
         // }}/>
