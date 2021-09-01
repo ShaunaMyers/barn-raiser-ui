@@ -10,8 +10,10 @@ const NeedList = ({ needs }) => {
         return `${monthFormat}/${day}/${year}`;
     }
 
-    const formatTime = (timeData) => {
-        
+    const formatTime = (time) => {
+        const shortenedTime = time.slice(11, 16);
+        const [hours, minutes] = shortenedTime.split(':');
+        return `${(hours > 12) ? hours - 12 : hours}:${minutes}${(hours >= 12) ? 'pm' : 'am'}`;
     }
 
     const allNeeds = needs.map(need => {
