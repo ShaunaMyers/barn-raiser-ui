@@ -1,7 +1,6 @@
 import './Need.css'
-import { needsData } from "../../needsData";
 
-const Need = ({ pointOfContact, title, description, startTime, endTime, zipCode, supporters }) => {
+const Need = ({ pointOfContact, title, description, date, startTime, endTime, zipCode, supporters }) => {
   return (
     <div className="need-container">
       <div className="need-info">
@@ -9,9 +8,10 @@ const Need = ({ pointOfContact, title, description, startTime, endTime, zipCode,
         <p className="bold">Details:</p>
         <p>{description}</p>
         <p className="bold">{zipCode}</p>
+        <p>{date}</p>
       </div>
       <div className="time-container">
-        <p>{startTime} -- </p>
+        <p>{startTime} - </p>
         <p>{endTime}</p>
       </div>
       <div className="need-info">
