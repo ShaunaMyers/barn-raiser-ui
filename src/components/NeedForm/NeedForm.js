@@ -58,6 +58,10 @@ const NeedForm = () => {
       name === 'needTitle' && setTitle(value);
       name === 'needDescription' && setDescription(value);
 
+      console.log(date, "DATE")
+      console.log(startTime, "START")
+      console.log(endTime, "END")
+
     }
 
     // Still need to write logic for the date and the time
@@ -100,7 +104,7 @@ const NeedForm = () => {
       e.preventDefault()
       setIsError(false)
       setIsSubmitted(false)
-      const newNeed = { variables: { pointOfContact, title, description, startTime, endTime, zipCode, supportersNeeded } };
+      const newNeed = { variables: { pointOfContact, title, description, startTime: formatTimeWithDate(startTime), endTime: formatTimeWithDate(endTime), zipCode, supportersNeeded } };
       const isThereAnError = checkUserInput(newNeed)
       if (isThereAnError) {
         setIsError(true);
@@ -110,6 +114,11 @@ const NeedForm = () => {
         setIsSubmitted(true);
         clearInputs();
       }
+    }
+    // "2021-09-27 12:00"
+    // "2021-08-27 16:00"
+    const formatTimeWithDate = (time) => {
+        return `${date} ${time}`;
     }
 
     return (
