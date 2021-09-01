@@ -1,6 +1,7 @@
 import './App.css';
 import NeedForm from '../NeedForm/NeedForm';
 import NeedList from '../NeedList/NeedList';
+import Search from '../Search/Search';
 import { Route, Link } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 
@@ -38,6 +39,7 @@ function App() {
           <header>
             <Link to="/">
               <h1 className="logo">BarnRaiser</h1>
+              <Search />
             </Link>
           </header>
           <Route exact path="/" render={() => {
