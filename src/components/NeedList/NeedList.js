@@ -4,7 +4,10 @@ import Need from "../Need/Need";
 const NeedList = ({ needs }) => {
 
     const formatDate = (date) => {
-        
+        const formattedDate = new Date(date);
+        const [month, day, year] = [(1 + formattedDate.getMonth()), formattedDate.getDate(), formattedDate.getFullYear()];
+        const monthFormat = month > 9 ? month : '0' + month;
+        return `${monthFormat}/${day}/${year}`;
     }
 
     const allNeeds = needs.map(need => {
