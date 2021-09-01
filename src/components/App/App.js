@@ -39,8 +39,7 @@ function App() {
           <header>
             <Link to="/">
               <h1 className="logo">BarnRaiser</h1>
-            </Link>
-            <Search />  
+            </Link>  
           </header>
           <Route exact path="/" render={() => {
             return (
@@ -66,7 +65,10 @@ function App() {
             }}/>
           <Route exact path="/NeedList" render={() => {
             return (
-              <NeedList needs={data.allActiveNeeds} />
+              <section>
+                <Search />
+                <NeedList needs={data.allActiveNeeds} />
+              </section>
               )
             }}/>
         </main>
