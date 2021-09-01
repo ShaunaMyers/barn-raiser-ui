@@ -3,3 +3,7 @@
   padding: 1% 2%;
   width: 10%;
 }
+
+.checkbox-container {
+  display: flex;
+}
