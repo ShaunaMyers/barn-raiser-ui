@@ -36,7 +36,6 @@ const NeedForm = () => {
     const [supportersNeeded, setSupportersNeeded] = useState(0);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [errorMessage, setErrorMessage] = useState({});
     const [isError, setIsError] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -69,6 +68,7 @@ const NeedForm = () => {
     const checkUserInput = ({variables}) => {
       const needKeys = Object.keys(variables)
       let error = false;
+      let erroredInputs = [];
       needKeys.forEach((key) => {
         if (!variables[key]) {
           error = true;
@@ -117,28 +117,20 @@ const NeedForm = () => {
         {!!isSubmitted && <h3 className="success-message">Success! Your submission has been recorded. <Link to="/NeedList">Take me there.</Link></h3>}
         <label for="email">Contact Email:</label>
         <input onChange={handleInputChange} type="email" name="email" id="email" placeholder="Email Address" value={pointOfContact}/>
-        {/* conditional -- if errorMessage.email, render error message*/}
         <label for="zipCode">Zip Code:</label>
         <input onChange={handleInputChange} type="text" name="zipCode" id="zipCode" placeholder="Zip Code" value={zipCode}/>
-        {/* conditional -- if errorMessage.zipCode, render error message*/}
         <label for="needDate">Date:</label>
         <input onChange={handleInputChange} type="date" name="needDate" id="needDate" min={new Date().toISOString().slice(0,10)} max="2025-08-27"/>
-        {/* conditional -- if errorMessage.needDate, render error message*/}
         <label for="startTime">Start Time:</label>
         <input onChange={handleInputChange} type="time" name="startTime" id="startTime"/>
-        {/* conditional -- if errorMessage.startTime, render error message*/}
         <label for="endTime">End Time:</label>
         <input onChange={handleInputChange} type="time" name="endTime" id="endTime"/>
-        {/* conditional -- if errorMessage.endTime, render error message*/}
         <label for="volunteersNeeded">Number of Volunteers Needed:</label>
         <input onChange={handleInputChange} type="number" name="volunteersNeeded" id="volunteersNeeded" min="1" max="100" value={supportersNeeded}/>
-        {/* conditional -- if errorMessage.volunteersNeeded, render error message*/}
         <label for="needTitle">Title:</label>
         <input onChange={handleInputChange} type="text" name="needTitle" id="needTitle" placeholder="Give your need a title" value={title}/>
-        {/* conditional -- if errorMessage.needTitle, render error message*/}
         <label for="needDescription">Description:</label>
         <input onChange={handleInputChange} type="text" name="needDescription" id="needDescription" placeholder="Describe your need" value={description} />
-        {/* conditional -- if errorMessage.needDescription, render error message*/}
         {!!isError && <ErrorMessage errorMessage="Warning: Your submission could not go through." />}
         <button onClick={handleAddNeed} className="submit-button">Submit</button>
       </form>
