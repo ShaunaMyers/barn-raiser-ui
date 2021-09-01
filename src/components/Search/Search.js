@@ -5,12 +5,13 @@ import './Search.css';
 const Search = () => {
 
     const [isChecked, setIsChecked] = useState(false);
+    const [searchInput, setSearchInput] = useState('');
 
     return ( 
         <Route exact path="/NeedList" render={() => {
             return (
             <form>
-                <input type="text" name="search" placeholder="Search for need entries"/>
+                <input onChange={(e) => setSearchInput(e.target.value)} type="text" name="search" placeholder="Search for need entries" value={searchInput}/>
                     <div className="checkbox-container">
                             <input className="zip-code-box" type="checkbox" id="zipCodeBox" checked={isChecked}/>
                             <label for="zipCodeBox">Zip Code</label>
