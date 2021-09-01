@@ -29,17 +29,7 @@ h4 {
   background-color: #f0f0f0;
 }
 
-.need-description-info {
-  align-items: flex-start;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 1%;
-  width: 33%;
-}
-
-.need-volunteer-info {
+.need-info {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
@@ -51,6 +41,26 @@ h4 {
 
 .bold {
   font-weight: bold;
+}
+
+.button-container {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1%;
+  width: 33%;
+}
+
+.volunteer-button {
+  background-color: #DCAE1D;
+  color: #000000;
+}
+
+.volunteer-button:hover {
+  background-color: #00303F;
+  color: #FFFFFF;
 }
 
 @media only screen and (max-width: 1110px) {
@@ -65,12 +75,12 @@ h4 {
     width: 90%;
   }
 
-  .need-description-info {
+  .need-info {
     align-items: center;
     width: 90%;
   }
 
-  .need-volunteer-info {
+  .button-container {
     align-items: center;
     width: 90%;
   }

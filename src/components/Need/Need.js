@@ -4,7 +4,7 @@ import { needsData } from "../../needsData";
 const Need = ({ pointOfContact, title, description, startTime, endTime, zipCode, supporters }) => {
   return (
     <div className="need-container">
-      <div className="need-description-info">
+      <div className="need-info">
         <h4>{title}</h4>
         <p className="bold">Details:</p>
         <p>{description}</p>
@@ -14,11 +14,14 @@ const Need = ({ pointOfContact, title, description, startTime, endTime, zipCode,
         <p>{startTime} -- </p>
         <p>{endTime}</p>
       </div>
-      <div className="need-volunteer-info">
+      <div className="need-info">
         <p className="bold">Volunteers Needed:</p>
         <p>{supporters}</p>
         <p className="bold">Contact:</p>
         <p>{pointOfContact}</p>
+      </div>
+      <div className="button-container">
+        <button className="volunteer-button">Volunteer</button>
       </div>
     </div>
    );
