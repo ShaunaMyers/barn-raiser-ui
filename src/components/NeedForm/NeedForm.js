@@ -57,17 +57,7 @@ const NeedForm = () => {
       name === 'volunteersNeeded' && setSupportersNeeded(parseInt(value));
       name === 'needTitle' && setTitle(value);
       name === 'needDescription' && setDescription(value);
-
-      console.log(date, "DATE")
-      console.log(startTime, "START")
-      console.log(endTime, "END")
-
     }
-
-    // Still need to write logic for the date and the time
-        // startTime and endTime are coming in from the backend as strings that include the date
-        // Need to parse the date from startTime and endTime for display
-        // Also need to logic to send back the date included in startTime and endTime
 
     const checkUserInput = ({variables}) => {
       const needKeys = Object.keys(variables)
@@ -83,7 +73,6 @@ const NeedForm = () => {
             return;
           }
         } else if (key === "endTime") {
-          // check end time is not before start time
         }
       })
       return error;
@@ -115,8 +104,7 @@ const NeedForm = () => {
         clearInputs();
       }
     }
-    // "2021-09-27 12:00"
-    // "2021-08-27 16:00"
+
     const formatTimeWithDate = (time) => {
         return `${date} ${time}`;
     }
