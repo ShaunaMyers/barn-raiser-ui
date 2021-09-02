@@ -38,6 +38,11 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
         }
     }
 
+    const onViewAllNeeds = () => {
+        handleViewAllNeeds();
+        setSuccessfulSearch(false);
+    }
+
     return ( 
         // <Route exact path="/NeedList" render={() => {
         //     return (
@@ -52,7 +57,7 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
                 <button onClick={onSearchSubmit} className="search-button">Search</button>
                 {successfulSearch && 
                 // <button onClick={handleViewAllNeeds} className="see-all-button">See All Needs</button>
-                <a onClick={handleViewAllNeeds} className="see-all-link">See All Needs</a>
+                <a onClick={onViewAllNeeds} className="see-all-link">See All Needs</a>
                 }
                 {errorMessage &&
                     <ErrorMessage errorMessage={errorMessage}/>
