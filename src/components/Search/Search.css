@@ -7,3 +7,23 @@
 .checkbox-container {
   display: flex;
 }
+
+.see-all-link {
+  color: blue;
+  text-decoration: underline;
+}
+
+.see-all-link:hover {
+  color: purple;
+  cursor: pointer;
+}
+
+/* 
+.see-all-button {
+  background-color: white;
+  border: none;
+  color: blue;
+  outline: none;
+  padding: 2%;
+  text-decoration: underline;
+} */
