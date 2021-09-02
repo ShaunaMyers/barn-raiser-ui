@@ -16,16 +16,26 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
         setErrorMessage('');
         setSuccessfulSearch(false);
         if (searchInput && zipCodeBox) {
-            handleSearchSubmit(searchInput, 'zipCode');
-            setSuccessfulSearch(true);
+            executeSuccessfulSearch(searchInput, 'zipCode')
         } else if (searchInput && dateBox) {
-            handleSearchSubmit(searchInput, 'date');
-            setSuccessfulSearch(true);
+            executeSuccessfulSearch(searchInput, 'startTime');
         } else if (!zipCodeBox && !dateBox){
             setErrorMessage('Please check a box to complete your search')
         } else {
             setErrorMessage('Please enter text to complete your search')
         }
+    }
+
+    const executeSuccessfulSearch = (input, type) => {
+        if (type === 'startTime') {
+            const splitSearch = searchInput.split('/');
+            const reformattedSearch = `${splitSearch[2]}-${splitSearch[0]}-${splitSearch[1]}`
+            handleSearchSubmit(reformattedSearch, type);
+        } else {
+            handleSearchSubmit(input, type);
+        }
+        setSuccessfulSearch(true);
+        // clearInputs()
     }
 
     const changeCheckedBoxes = (num) => {
@@ -44,8 +54,6 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
     }
 
     return ( 
-        // <Route exact path="/NeedList" render={() => {
-        //     return (
             <form>
                 <input onChange={(e) => setSearchInput(e.target.value)} type="text" name="search" placeholder="Search for need entries" value={searchInput}/>
                     <div className="checkbox-container">
@@ -56,15 +64,12 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
                     </div>
                 <button onClick={onSearchSubmit} className="search-button">Search</button>
                 {successfulSearch && 
-                // <button onClick={handleViewAllNeeds} className="see-all-button">See All Needs</button>
                 <a onClick={onViewAllNeeds} className="see-all-link">See All Needs</a>
                 }
                 {errorMessage &&
                     <ErrorMessage errorMessage={errorMessage}/>
                 }
             </form>
-        //     )
-        // }}/>
      );
 }
  
