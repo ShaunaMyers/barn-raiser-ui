@@ -21,8 +21,14 @@ export const NEEDS_QUERY = gql`{
 
 function App() {
 
+  const [searchResults, setSearchResults] = useState([]);
 
   const { loading, error, data } = useQuery(NEEDS_QUERY);
+
+  const handleSearchSubmit = (searchInput, type) => {
+    const foundResults = data.filter(need => need[type] === searchInput)
+    setSearchResults(foundResults);
+  }
 
   if (loading) {
     return(
@@ -66,7 +72,7 @@ function App() {
           <Route exact path="/NeedList" render={() => {
             return (
               <section>
-                <Search />
+                <Search handleSearchSubmit={handleSearchSubmit}/>
                 <NeedList needs={data.allActiveNeeds} />
               </section>
               )
