@@ -27,7 +27,12 @@ function App() {
   const { loading, error, data } = useQuery(NEEDS_QUERY);
 
   const handleSearchSubmit = (searchInput, type) => {
-    const foundResults = data.allActiveNeeds.filter(need => need[type] === searchInput)
+    let foundResults;
+    if (type === 'startTime') {
+      foundResults = data.allActiveNeeds.filter(need => need[type].slice(0, 10) === searchInput);
+    } else {
+      foundResults = data.allActiveNeeds.filter(need => need[type] === searchInput)
+    }
     setSearchResults(foundResults);
   }
 
