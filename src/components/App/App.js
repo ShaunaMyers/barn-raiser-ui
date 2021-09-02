@@ -2,6 +2,7 @@ import './App.css';
 import NeedForm from '../NeedForm/NeedForm';
 import NeedList from '../NeedList/NeedList';
 import Search from '../Search/Search';
+import { useState } from 'react';
 import { Route, Link } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 
@@ -26,8 +27,12 @@ function App() {
   const { loading, error, data } = useQuery(NEEDS_QUERY);
 
   const handleSearchSubmit = (searchInput, type) => {
-    const foundResults = data.filter(need => need[type] === searchInput)
+    const foundResults = data.allActiveNeeds.filter(need => need[type] === searchInput)
     setSearchResults(foundResults);
+  }
+
+  const handleViewAllNeeds = () => {
+    setSearchResults([]);
   }
 
   if (loading) {
@@ -72,8 +77,11 @@ function App() {
           <Route exact path="/NeedList" render={() => {
             return (
               <section>
-                <Search handleSearchSubmit={handleSearchSubmit}/>
-                <NeedList needs={data.allActiveNeeds} />
+                <Search handleSearchSubmit={handleSearchSubmit} handleViewAllNeeds={handleViewAllNeeds}/>
+                <NeedList needs={
+                  searchResults.length ? searchResults :
+                  data.allActiveNeeds
+                } />
               </section>
               )
             }}/>
