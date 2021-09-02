@@ -3,7 +3,7 @@ import { useState } from 'react';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import './Search.css';
 
-const Search = () => {
+const Search = ({ handleSearchSubmit }) => {
 
     const [zipCodeBox, setZipCodeBox] = useState(false);
     const [dateBox, setDateBox] = useState(false);
@@ -13,13 +13,11 @@ const Search = () => {
     const onSearchSubmit = (e) => {
         e.preventDefault();
         setErrorMessage('');
-        // If not use Error component to display a message 
         if (searchInput && zipCodeBox) {
-            // handleSearchSubmit(searchInput, 'zipCode');
+            handleSearchSubmit(searchInput, 'zipCode');
         } else if (searchInput && dateBox) {
-            // handleSearchSubmit(searchInput, 'date');
+            handleSearchSubmit(searchInput, 'date');
         } else if (!zipCodeBox && !dateBox){
-            // setIsError(true)
             setErrorMessage('Please check a box to complete your search')
         } else {
             setErrorMessage('Please enter text to complete your search')
