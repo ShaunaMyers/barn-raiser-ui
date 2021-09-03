@@ -5,6 +5,7 @@ import Search from '../Search/Search';
 import { useState } from 'react';
 import { Route, Link } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 export const NEEDS_QUERY = gql`{
   allActiveNeeds{
@@ -23,8 +24,12 @@ export const NEEDS_QUERY = gql`{
 function App() {
 
   const [searchResults, setSearchResults] = useState([]);
+  const [noMatches, setNoMatches] = useState('')
+  // const cleanedNeeds set
 
   const { loading, error, data } = useQuery(NEEDS_QUERY);
+
+  // useEffect 
 
   const handleSearchSubmit = (searchInput, type) => {
     let foundResults;
@@ -33,6 +38,7 @@ function App() {
     } else {
       foundResults = data.allActiveNeeds.filter(need => need[type] === searchInput)
     }
+    !foundResults.length && setNoMatches('Sorry, no needs that match your search. Please enter different search criteria.')
     setSearchResults(foundResults);
   }
 
@@ -83,6 +89,9 @@ function App() {
             return (
               <section>
                 <Search handleSearchSubmit={handleSearchSubmit} handleViewAllNeeds={handleViewAllNeeds}/>
+                {noMatches.length &&
+                  <ErrorMessage className="matchError" errorMessage={noMatches}/>
+                }
                 <NeedList needs={
                   searchResults.length ? searchResults :
                   data.allActiveNeeds
