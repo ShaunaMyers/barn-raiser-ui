@@ -13,7 +13,6 @@ const NeedList = ({ needs }) => {
     const formatTime = (time) => {
         const shortenedTime = time.slice(11, 16);
         const [hours, minutes] = shortenedTime.split(':');
-        // single digits on minutes
         return `${(hours > 12) ? hours - 12 : hours}:${minutes}${(hours >= 12) ? 'pm' : 'am'}`;
     }
 

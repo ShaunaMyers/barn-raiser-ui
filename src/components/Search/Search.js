@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import { Route } from 'react-router-dom';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import './Search.css';
 
@@ -35,7 +34,6 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
             handleSearchSubmit(input, type);
         }
         setSuccessfulSearch(true);
-        // clearInputs()
     }
 
     const changeCheckedBoxes = (num) => {
@@ -64,10 +62,10 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
             <form>
                 <input onChange={(e) => setSearchInput(e.target.value)} type="text" name="search" placeholder="Search for need entries" value={searchInput}/>
                     <div className="checkbox-container">
-                            <input onChange={() => changeCheckedBoxes(1)} className="zip-code-box" type="checkbox" id="zipCodeBox" checked={zipCodeBox}/>
-                            <label>Zip Code</label>
+                            <input onChange={() => changeCheckedBoxes(1)} className="checkboxes" type="checkbox" id="zipCodeBox" checked={zipCodeBox}/>
+                            <label className="checkbox-label" htmlFor="zipCodeBox">Zip Code</label>
                             <input onChange={() => changeCheckedBoxes(2)} className="checkboxes" type="checkbox" id="dateBox" checked={dateBox}/>
-                            <label>Date</label>
+                            <label className="checkbox-label" htmlFor="dateBox">Date</label>
                     </div>
                 <button onClick={onSearchSubmit} className="search-button">Search</button>
                 {successfulSearch && 
