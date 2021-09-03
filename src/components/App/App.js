@@ -38,12 +38,14 @@ function App() {
     } else {
       foundResults = data.allActiveNeeds.filter(need => need[type] === searchInput)
     }
-    !foundResults.length && setNoMatches('Sorry, no needs that match your search. Please enter different search criteria.')
+    !foundResults.length && setNoMatches('Sorry, no needs match your search. Please enter different search criteria.')
     setSearchResults(foundResults);
   }
 
   const handleViewAllNeeds = () => {
+    console.log('here')
     setSearchResults([]);
+    setNoMatches('')
   }
 
   if (loading) {
@@ -89,7 +91,7 @@ function App() {
             return (
               <section>
                 <Search handleSearchSubmit={handleSearchSubmit} handleViewAllNeeds={handleViewAllNeeds}/>
-                {noMatches.length &&
+                {noMatches &&
                   <ErrorMessage className="matchError" errorMessage={noMatches}/>
                 }
                 <NeedList needs={
