@@ -6,6 +6,15 @@
 
 .checkbox-container {
   display: flex;
+  justify-content: center;
+}
+
+.checkboxes {
+  min-width: 70%;
+}
+
+.checkbox-label {
+  min-width: 70%;
 }
 
 .see-all-link {
@@ -17,13 +26,3 @@
   color: purple;
   cursor: pointer;
 }
-
-/* 
-.see-all-button {
-  background-color: white;
-  border: none;
-  color: blue;
-  outline: none;
-  padding: 2%;
-  text-decoration: underline;
-} */
