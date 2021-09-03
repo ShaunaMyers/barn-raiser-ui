@@ -25,11 +25,7 @@ function App() {
 
   const [searchResults, setSearchResults] = useState([]);
   const [noMatches, setNoMatches] = useState('')
-  // const cleanedNeeds set
-
   const { loading, error, data } = useQuery(NEEDS_QUERY);
-
-  // useEffect 
 
   const handleSearchSubmit = (searchInput, type) => {
     let foundResults;
@@ -43,7 +39,6 @@ function App() {
   }
 
   const handleViewAllNeeds = () => {
-    console.log('here')
     setSearchResults([]);
     setNoMatches('')
   }
