@@ -51,6 +51,13 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
     const onViewAllNeeds = () => {
         handleViewAllNeeds();
         setSuccessfulSearch(false);
+        clearInputs()
+    }
+
+    const clearInputs = () => {
+        setSearchInput('');
+        setZipCodeBox(false);
+        setDateBox(false);
     }
 
     return ( 
