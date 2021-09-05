@@ -8,8 +8,4 @@ describe('Barn Raiser Error Handling', () => {
     cy.get('h3').contains('Can You Offer Assistance?').should('be.visible');
     cy.get('button').contains('Give Help').should('be.visible');
   });
-
-  it('should notify the user if their help request cannot go through to the server');
-
-  it('should display a message to the user if it cannot fetch help requests from the server');
 });
