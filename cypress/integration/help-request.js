@@ -61,8 +61,7 @@ describe('Barn Raiser Help Request Form', () => {
     cy.get('input[name="needDescription"]').type('Come help me weed the community garden outside Denver Church!');
     cy.get('button').contains('Submit').click();
     cy.wait(100);
-    cy.get('a').eq('1').click();
-    cy.url().should('include', '/NeedList');
+    cy.visit('http://localhost:3000/NeedList');
     cy.get('.all-needs').should('be.visible');
     cy.get('h4').contains('Help Me Weed the Garden').should('be.visible');
     cy.get('p').contains('Come help me weed the community garden outside Denver Church!').should('be.visible');
@@ -75,23 +74,45 @@ describe('Barn Raiser Help Request Form', () => {
 
   it('should not allow the user to submit if any data is missing', () => {
     cy.get('button').contains('Submit').click();
-    cy.url().should('include', '/NeedForm');
     cy.get('h3').contains('Warning: Your submission could not go through.').should('be.visible');
   });
 
   it('should not allow the user to submit if the start time is after the end time', () => {
-
+    cy.get('input[name="email"]').type('test.email@gmail.com');
+    cy.get('input[name="zipCode"]').type('80230');
+    cy.get('input[name="needDate"]').type('2021-09-15');
+    cy.get('input[name="startTime"]').type('09:00:00');
+    cy.get('input[name="endTime"]').type('08:00:00');
+    cy.get('input[name="volunteersNeeded"]').type('300');
+    cy.get('input[name="needTitle"]').type('Make a Video Game');
+    cy.get('input[name="needDescription"]').type('I need people to help me make a video game!');
+    cy.get('button').contains('Submit').click();
+    cy.get('h3').contains('Warning: Your submission could not go through.').should('be.visible');
   });
 
   it('should not allow the user to submit if the email address is not in a valid format', () => {
-
+    cy.get('input[name="email"]').type('bad.email');
+    cy.get('input[name="zipCode"]').type('80230');
+    cy.get('input[name="needDate"]').type('2021-09-15');
+    cy.get('input[name="startTime"]').type('09:00:00');
+    cy.get('input[name="endTime"]').type('10:00:00');
+    cy.get('input[name="volunteersNeeded"]').type('300');
+    cy.get('input[name="needTitle"]').type('Make a Video Game');
+    cy.get('input[name="needDescription"]').type('I need people to help me make a video game!');
+    cy.get('button').contains('Submit').click();
+    cy.get('h3').contains('Warning: Your submission could not go through.').should('be.visible');
   });
 
   it('should not allow the user to submit if the zip code is in an invalid format', () => {
-
-  });
-
-  it('should give a visual indicator if the request cannot be submitted', () => {
-
+    cy.get('input[name="email"]').type('good.email@gmail.com');
+    cy.get('input[name="zipCode"]').type('8000000000000');
+    cy.get('input[name="needDate"]').type('2021-09-15');
+    cy.get('input[name="startTime"]').type('09:00:00');
+    cy.get('input[name="endTime"]').type('10:00:00');
+    cy.get('input[name="volunteersNeeded"]').type('300');
+    cy.get('input[name="needTitle"]').type('Make a Video Game');
+    cy.get('input[name="needDescription"]').type('I need people to help me make a video game!');
+    cy.get('button').contains('Submit').click();
+    cy.get('h3').contains('Warning: Your submission could not go through.').should('be.visible');
   });
 });
