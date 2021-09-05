@@ -42,6 +42,7 @@ const NeedForm = () => {
     const [foodPrepChecked, setFoodPrepChecked] = useState(false);
     const [transportationChecked, setTransportationChecked] = useState(false);
     const [organizingChecked, setOrganizingChecked] = useState(false);
+    const [otherChecked, setOtherChecked] = useState(false);
     const [isError, setIsError] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -155,6 +156,8 @@ const NeedForm = () => {
         <label htmlFor="transportationCheckbox">Transportation</label>
         <input onChange={handleCheckboxChange} type="checkbox" name="organizing-checkbox" id="organizingCheckbox" checked={organizingChecked}/>
         <label htmlFor="organizingCheckbox">Organizing/Event Management</label>
+        <input onChange={handleCheckboxChange} type="checkbox" name="other-checkbox" id="otherCheckbox" checked={otherChecked}/>
+        <label htmlFor="otherCheckbox">Other</label>
         {!!isError && <ErrorMessage errorMessage="Warning: Your submission could not go through." />}
         <button onClick={handleAddNeed} className="submit-button">Submit</button>
       </form>
