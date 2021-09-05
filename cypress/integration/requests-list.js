@@ -15,8 +15,4 @@ describe('Barn Raiser Request List', () => {
   it('should display a list of previously submitted requests', () => {
     cy.get('.all-needs').should('be.visible');
   });
-
-  it('should give the user the option to contact the person requesting help');
-
-  it('should give the user the option to volunteer / sign up for a need by clicking a separate button');
 });

@@ -3,7 +3,7 @@ import NeedForm from '../NeedForm/NeedForm';
 import NeedList from '../NeedList/NeedList';
 import Search from '../Search/Search';
 import { useState } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Redirect } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
@@ -63,7 +63,7 @@ function App() {
           <header>
             <Link to="/">
               <h1 className="logo">BarnRaiser</h1>
-            </Link>  
+            </Link>
           </header>
           <Route exact path="/" render={() => {
             return (
@@ -101,6 +101,13 @@ function App() {
               </section>
               )
             }}/>
+            <Route
+              render={() => {
+                return (
+                  <Redirect to="/" />
+                )
+              }}
+            />
         </main>
     );
   }
