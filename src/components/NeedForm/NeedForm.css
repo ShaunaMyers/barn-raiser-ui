@@ -7,8 +7,8 @@ form {
 }
 
 input {
-  border: 1px solid #00303F;
-  font-family: 'Lato', sans-serif;
+  border: 1px solid #00303f;
+  font-family: "Lato", sans-serif;
   font-size: 1.1em;
   margin: 1%;
   min-width: 300px;
@@ -17,7 +17,7 @@ input {
 }
 
 label {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   font-size: 1.25em;
 }
 
