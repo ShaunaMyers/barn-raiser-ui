@@ -33,9 +33,11 @@ const NeedForm = () => {
     const [date, setDate] = useState('');
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
+    const [category, setCategory] = useState([]);
     const [supportersNeeded, setSupportersNeeded] = useState(0);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    const [deliveryChecked, setDeliveryChecked] = useState(false);
     const [isError, setIsError] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -59,10 +61,14 @@ const NeedForm = () => {
       name === 'needDescription' && setDescription(value);
     }
 
+    const handleCheckboxChange = (e) => {
+      
+    }
+
     const checkUserInput = ({variables}) => {
       const needKeys = Object.keys(variables)
       let error = false;
-      let erroredInputs = [];
+      // let erroredInputs = [];
       needKeys.forEach((key) => {
         if (!variables[key]) {
           error = true;
@@ -98,6 +104,7 @@ const NeedForm = () => {
       setIsError(false)
       setIsSubmitted(false)
       const newNeed = { variables: { pointOfContact, title, description, startTime: formatTimeWithDate(startTime), endTime: formatTimeWithDate(endTime), zipCode, supportersNeeded } };
+      console.log(newNeed, "NEW NEED")
       const isThereAnError = checkUserInput(newNeed)
       if (isThereAnError) {
         setIsError(true);
@@ -112,6 +119,8 @@ const NeedForm = () => {
     const formatTimeWithDate = (time) => {
         return `${date} ${time}`;
     }
+
+    // ["Other", "Organizing / Event Management", "Delivery", "Handiwork", "Transportation", "Food Prep"]
 
     return (
       <form>
@@ -132,6 +141,8 @@ const NeedForm = () => {
         <input onChange={handleInputChange} type="text" name="needTitle" id="needTitle" placeholder="Give your need a title" value={title}/>
         <label for="needDescription">Description:</label>
         <input onChange={handleInputChange} type="text" name="needDescription" id="needDescription" placeholder="Describe your need" value={description} />
+        <input onChange={handleCheckboxChange} type="checkbox" name="delivery-checkbox" id="deliveryCheckbox" checked={deliveryChecked}/>
+        <label htmlFor="deliveryCheckbox">Delivery</label>
         {!!isError && <ErrorMessage errorMessage="Warning: Your submission could not go through." />}
         <button onClick={handleAddNeed} className="submit-button">Submit</button>
       </form>
