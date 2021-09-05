@@ -72,11 +72,16 @@ const NeedForm = () => {
             error = true
             return;
           }
+        } else if (key === "pointOfContact") {
+          if (!variables[key].includes('@') || !variables[key].includes('.')) {
+            error = true
+            return;
+          }
         } else if (key === "endTime") {
             if (endTime < startTime) {
                 error = true;
                 return;
-            } 
+            }
         }
       })
       return error;
