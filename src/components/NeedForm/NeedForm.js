@@ -146,17 +146,17 @@ const NeedForm = () => {
         <input onChange={handleInputChange} type="text" name="needTitle" id="needTitle" placeholder="Give your need a title" value={title}/>
         <label for="needDescription">Description:</label>
         <input onChange={handleInputChange} type="text" name="needDescription" id="needDescription" placeholder="Describe your need" value={description} />
-        <input onChange={handleCheckboxChange} type="checkbox" name="delivery-checkbox" id="deliveryCheckbox" checked={deliveryChecked}/>
+        <input onChange={() => setDeliveryChecked(!deliveryChecked)} type="checkbox" name="delivery-checkbox" id="deliveryCheckbox" checked={deliveryChecked}/>
         <label htmlFor="deliveryCheckbox">Delivery</label>
-        <input onChange={handleCheckboxChange} type="checkbox" name="handiwork-checkbox" id="handiworkCheckbox" checked={handiworkChecked}/>
+        <input onChange={() => setHandiworkChecked(!handiworkChecked)} type="checkbox" name="handiwork-checkbox" id="handiworkCheckbox" checked={handiworkChecked}/>
         <label htmlFor="handiworkCheckbox">Handiwork</label>
-        <input onChange={handleCheckboxChange} type="checkbox" name="food-prep-checkbox" id="foodPrepCheckbox" checked={foodPrepChecked}/>
+        <input onChange={() => setFoodPrepChecked(!foodPrepChecked)} type="checkbox" name="food-prep-checkbox" id="foodPrepCheckbox" checked={foodPrepChecked}/>
         <label htmlFor="foodPrepCheckbox">Food Prep</label>
-        <input onChange={handleCheckboxChange} type="checkbox" name="transportation-checkbox" id="transportationCheckbox" checked={transportationChecked}/>
+        <input onChange={() => setTransportationChecked(!transportationChecked)} type="checkbox" name="transportation-checkbox" id="transportationCheckbox" checked={transportationChecked}/>
         <label htmlFor="transportationCheckbox">Transportation</label>
-        <input onChange={handleCheckboxChange} type="checkbox" name="organizing-checkbox" id="organizingCheckbox" checked={organizingChecked}/>
+        <input onChange={() => setOrganizingChecked(!organizingChecked)} type="checkbox" name="organizing-checkbox" id="organizingCheckbox" checked={organizingChecked}/>
         <label htmlFor="organizingCheckbox">Organizing/Event Management</label>
-        <input onChange={handleCheckboxChange} type="checkbox" name="other-checkbox" id="otherCheckbox" checked={otherChecked}/>
+        <input onChange={() => setOtherChecked(!otherChecked)} type="checkbox" name="other-checkbox" id="otherCheckbox" checked={otherChecked}/>
         <label htmlFor="otherCheckbox">Other</label>
         {!!isError && <ErrorMessage errorMessage="Warning: Your submission could not go through." />}
         <button onClick={handleAddNeed} className="submit-button">Submit</button>
