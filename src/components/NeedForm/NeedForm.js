@@ -137,7 +137,7 @@ const NeedForm = () => {
         <input onChange={handleInputChange} type="text" name="needTitle" id="needTitle" placeholder="Give your need a title" value={title}/>
         <label for="needDescription">Description:</label>
         <input onChange={handleInputChange} type="text" name="needDescription" id="needDescription" placeholder="Describe your need" value={description} />
-        {!!isError && <ErrorMessage errorMessage="Warning: Your submission could not go through." />}
+        {!!isError && <ErrorMessage errorMessage="Warning: Your submission could not go through. Please check all your inputs and try again." />}
         <button onClick={handleAddNeed} className="submit-button">Submit</button>
       </form>
     );
