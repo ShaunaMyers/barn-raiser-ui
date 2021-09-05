@@ -14,10 +14,12 @@ describe('Barn Raiser Dashboard', () => {
   it('should allow the user to switch to a view of a form to submit their own request for help', () => {
     cy.get('button').contains('I Need Help').click();
     cy.url().should('include', '/NeedForm');
+    cy.get('form').should('be.visible');
   });
 
   it('should allow the user to switch to a page to view all requests for help', () => {
     cy.get('button').contains('Give Help').click();
     cy.url().should('include', '/NeedList');
+    cy.get('.all-needs').should('be.visible');
   });
 });
