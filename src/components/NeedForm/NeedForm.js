@@ -38,7 +38,6 @@ const NeedForm = () => {
     const [date, setDate] = useState('');
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
-    const [category, setCategory] = useState([]);
     const [supportersNeeded, setSupportersNeeded] = useState(0);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -128,12 +127,11 @@ const NeedForm = () => {
 
     const findCategoryIds = () => {
       const categoryIds = []
-      const categories = [otherChecked, organizingChecked, deliveryChecked, handiworkChecked, transportationChecked, foodPrepChecked]
+      const categories = [otherChecked, organizingChecked, deliveryChecked, handiworkChecked, transportationChecked, foodPrepChecked];
 
       categories.forEach((category, index) => {
         category === true && categoryIds.push(index + 1)
       })
-
       return categoryIds;
     }
 
@@ -156,6 +154,7 @@ const NeedForm = () => {
         <input onChange={handleInputChange} type="text" name="needTitle" id="needTitle" placeholder="Give your need a title" value={title}/>
         <label for="needDescription">Description:</label>
         <input onChange={handleInputChange} type="text" name="needDescription" id="needDescription" placeholder="Describe your need" value={description} />
+        <label>Category:</label>
         <input onChange={() => setDeliveryChecked(!deliveryChecked)} type="checkbox" name="delivery-checkbox" id="deliveryCheckbox" checked={deliveryChecked}/>
         <label htmlFor="deliveryCheckbox">Delivery</label>
         <input onChange={() => setHandiworkChecked(!handiworkChecked)} type="checkbox" name="handiwork-checkbox" id="handiworkCheckbox" checked={handiworkChecked}/>
