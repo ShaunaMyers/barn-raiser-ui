@@ -1,6 +1,5 @@
-
 h4 {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   font-size: 1.25em;
 }
 
@@ -22,7 +21,7 @@ h4 {
 }
 
 .need-container:nth-child(odd) {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .need-container:nth-child(even) {
@@ -54,13 +53,17 @@ h4 {
 }
 
 .volunteer-button {
-  background-color: #DCAE1D;
+  background-color: #dcae1d;
   color: #000000;
 }
 
 .volunteer-button:hover {
-  background-color: #00303F;
-  color: #FFFFFF;
+  background-color: #00303f;
+  color: #ffffff;
+}
+
+.category-container {
+  display: flex;
 }
 
 @media only screen and (max-width: 1110px) {

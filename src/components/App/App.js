@@ -18,6 +18,11 @@ export const NEEDS_QUERY = gql`{
     zipCode
     supportersNeeded
     status
+    categories
+      {
+      id
+      tag
+      }
   }
 }`;
 
