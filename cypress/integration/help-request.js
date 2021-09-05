@@ -32,4 +32,12 @@ describe('Barn Raiser Help Request Form', () => {
   it('should show the newly created request on the requests list page');
 
   it('should not allow the user to submit if any data is missing');
+
+  it('should not allow the user to submit if the start time is after the end time');
+
+  it('should not allow the user to submit if the email address is not in a valid format');
+
+  it('should not allow the user to submit if the zip code is in an invalid format');
+
+  it('should give a visual indicator if the request cannot be submitted');
 });
