@@ -7,9 +7,9 @@ import { NEEDS_QUERY } from '../App/App';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const ADD_NEED = gql`
-    mutation createNeed($pointOfContact: String!, $title: String!, $description: String!, $startTime: String!, $endTime: String!, $zipCode: String!, $supportersNeeded: Int!) {
+    mutation createNeed($pointOfContact: String!, $title: String!, $description: String!, $startTime: String!, $endTime: String!, $zipCode: String!, $supportersNeeded: Int!, $categories: [ID!]!) {
 
-        createNeed( input: { pointOfContact: $pointOfContact, title: $title, description: $description, startTime: $startTime, endTime: $endTime, zipCode: $zipCode, supportersNeeded: $supportersNeeded }) {
+        createNeed( input: { pointOfContact: $pointOfContact, title: $title, description: $description, startTime: $startTime, endTime: $endTime, zipCode: $zipCode, supportersNeeded: $supportersNeeded, categories: $categories }) {
         need {
             id
             title
@@ -20,6 +20,11 @@ const ADD_NEED = gql`
             zipCode
             supportersNeeded
             status
+            categories
+              {
+                id
+                tag
+              }
           }
       errors
       }
@@ -66,10 +71,6 @@ const NeedForm = () => {
       name === 'needDescription' && setDescription(value);
     }
 
-    const handleCheckboxChange = (e) => {
-      
-    }
-
     const checkUserInput = ({variables}) => {
       const needKeys = Object.keys(variables)
       let error = false;
@@ -108,7 +109,7 @@ const NeedForm = () => {
       e.preventDefault()
       setIsError(false)
       setIsSubmitted(false)
-      const newNeed = { variables: { pointOfContact, title, description, startTime: formatTimeWithDate(startTime), endTime: formatTimeWithDate(endTime), zipCode, supportersNeeded } };
+      const newNeed = { variables: { pointOfContact, title, description, startTime: formatTimeWithDate(startTime), endTime: formatTimeWithDate(endTime), zipCode, supportersNeeded, categories: findCategoryIds()} };
       console.log(newNeed, "NEW NEED")
       const isThereAnError = checkUserInput(newNeed)
       if (isThereAnError) {
@@ -125,7 +126,16 @@ const NeedForm = () => {
         return `${date} ${time}`;
     }
 
-    // ["Other", "Organizing / Event Management", "Delivery", "Handiwork", "Transportation", "Food Prep"]
+    const findCategoryIds = () => {
+      const categoryIds = []
+      const categories = [otherChecked, organizingChecked, deliveryChecked, handiworkChecked, transportationChecked, foodPrepChecked]
+
+      categories.forEach((category, index) => {
+        category === true && categoryIds.push(index + 1)
+      })
+
+      return categoryIds;
+    }
 
     return (
       <form>
