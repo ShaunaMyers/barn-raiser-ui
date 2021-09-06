@@ -33,8 +33,12 @@ function App() {
   const { loading, error, data } = useQuery(NEEDS_QUERY);
 
   const handleSearchSubmit = (searchInput, type) => {
-    let foundResults;
-    if (type === 'startTime') {
+    let foundResults = [];
+    if (type === 'categories') {  
+      data.allActiveNeeds.forEach(need => {
+        need[type].forEach(category => category.tag === searchInput && foundResults.push(need));
+      });
+    } else if (type === 'startTime') {
       foundResults = data.allActiveNeeds.filter(need => need[type].slice(0, 10) === searchInput);
     } else {
       foundResults = data.allActiveNeeds.filter(need => need[type] === searchInput)
