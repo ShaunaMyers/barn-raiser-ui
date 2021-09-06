@@ -7,7 +7,10 @@ body {
 }
 
 header {
+  align-items: center;
   background-color: #cae4db;
+  display: flex;
+  justify-content: space-between;
   padding: 0.5% 1%;
 }
 
