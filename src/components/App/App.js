@@ -94,7 +94,7 @@ function App() {
           <Route exact path="/NeedList" render={() => {
             return (
               <section>
-                <Search handleSearchSubmit={handleSearchSubmit} handleViewAllNeeds={handleViewAllNeeds}/>
+                <Search handleSearchSubmit={handleSearchSubmit} handleViewAllNeeds={handleViewAllNeeds} searchResults={searchResults}/>
                 {noMatches &&
                   <ErrorMessage className="matchError" errorMessage={noMatches}/>
                 }
