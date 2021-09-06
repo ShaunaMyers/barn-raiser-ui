@@ -8,6 +8,7 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
     const [zipCodeBox, setZipCodeBox] = useState(false);
     const [categoryBox, setCategoryBox] = useState(false);
     const [searchInput, setSearchInput] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [successfulSearch, setSuccessfulSearch] = useState(false);
 
@@ -15,7 +16,9 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
         e.preventDefault();
         setErrorMessage('');
         setSuccessfulSearch(false);
-        if (searchInput && zipCodeBox) {
+        if (categoryBox) {
+            handleSearchByCategory()
+        } else if (searchInput && zipCodeBox) {
             executeSuccessfulSearch(searchInput, 'zipCode')
         } else if (searchInput && dateBox) {
             executeSuccessfulSearch(searchInput, 'startTime');
@@ -24,6 +27,10 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
         } else {
             setErrorMessage('Please enter text to complete your search')
         }
+    }
+
+    const handleSearchByCategory = () => {
+
     }
 
     const executeSuccessfulSearch = (input, type) => {
@@ -69,7 +76,7 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
             <form>
                 {!categoryBox ?
                 <input onChange={(e) => setSearchInput(e.target.value)} type="text" name="search" placeholder="Search for need entries" value={searchInput}/> :
-                <select className="select-category" name="selectCategory">
+                <select onChange={(e) => setSelectedCategory(e.target.value)} className="select-category" name="selectCategory">
                     <option value="choose">--Please choose an option--</option>
                     <option value="organizing">Organizing/Event Management</option>
                     <option value="handiwork">Handiwork</option>
