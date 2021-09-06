@@ -3,7 +3,8 @@ import './Need.css'
 const Need = ({ pointOfContact, title, categories, description, date, startTime, endTime, zipCode, supporters }) => {
 
   const formatCategoriesText = (tag, index) => {
-    if (index !== 0 && index !== categories.length - 1) return `  •  ${tag}  •  ` 
+    if (categories.length === 2 && index === 0) return `${tag}  •  ` 
+    else if (index !== 0 && index !== categories.length - 1) return `  •  ${tag}  •  ` 
     else return tag
   }
 
