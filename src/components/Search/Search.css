@@ -26,3 +26,13 @@
   color: purple;
   cursor: pointer;
 }
+
+.select-category {
+  border: 1px solid #00303f;
+  font-family: "Lato", sans-serif;
+  font-size: 1.1em;
+  margin: 2%;
+  min-width: 300px;
+  padding: 1%;
+  width: 40%;
+}
