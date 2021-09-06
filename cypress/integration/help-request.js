@@ -50,27 +50,6 @@ describe('Barn Raiser Help Request Form', () => {
     cy.get('h3').contains('Success! Your submission has been recorded.').should('be.visible');
   });
 
-  it('should show the newly created request on the requests list page', () => {
-    cy.get('input[name="email"]').type('test.email@gmail.com');
-    cy.get('input[name="zipCode"]').type('80230');
-    cy.get('input[name="needDate"]').type('2021-09-15');
-    cy.get('input[name="startTime"]').type('09:00:00');
-    cy.get('input[name="endTime"]').type('15:00:00');
-    cy.get('input[name="volunteersNeeded"]').type('3');
-    cy.get('input[name="needTitle"]').type('Help Me Weed the Garden');
-    cy.get('input[name="needDescription"]').type('Come help me weed the community garden outside Denver Church!');
-    cy.get('button').contains('Submit').click();
-    cy.wait(100);
-    cy.visit('http://localhost:3000/NeedList');
-    cy.get('h4').contains('Help Me Weed the Garden').should('be.visible');
-    cy.get('p').contains('Come help me weed the community garden outside Denver Church!').should('be.visible');
-    cy.get('p').contains('80230').should('be.visible');
-    cy.get('p').contains('09/15/2021').should('be.visible');
-    cy.get('p').contains('09:00am -').should('be.visible');
-    cy.get('p').contains('3:00pm').should('be.visible');
-    cy.get('p').contains('3').should('be.visible');
-  });
-
   it('should not allow the user to submit if any data is missing', () => {
     cy.get('button').contains('Submit').click();
     cy.get('h3').contains('Warning: Your submission could not go through.').should('be.visible');
