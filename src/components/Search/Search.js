@@ -62,10 +62,12 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
             <form>
                 <input onChange={(e) => setSearchInput(e.target.value)} type="text" name="search" placeholder="Search for need entries" value={searchInput}/>
                     <div className="checkbox-container">
-                            <input onChange={() => changeCheckedBoxes(1)} className="checkboxes" type="checkbox" id="zipCodeBox" checked={zipCodeBox}/>
-                            <label className="checkbox-label" htmlFor="zipCodeBox">Zip Code</label>
                             <input onChange={() => changeCheckedBoxes(2)} className="checkboxes" type="checkbox" id="dateBox" checked={dateBox}/>
                             <label className="checkbox-label" htmlFor="dateBox">Date</label>
+                            <input onChange={() => changeCheckedBoxes(1)} className="checkboxes" type="checkbox" id="zipCodeBox" checked={zipCodeBox}/>
+                            <label className="checkbox-label" htmlFor="zipCodeBox">Zip Code</label>
+                            <input onChange={() => changeCheckedBoxes(3)} className="checkboxes" type="checkbox" id="categoryBox" checked={categoryBox}/>
+                            <label className="checkbox-label" htmlFor="categoryBox">Category</label>
                     </div>
                 <button onClick={onSearchSubmit} className="search-button">Search</button>
                 {successfulSearch && 
