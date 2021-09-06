@@ -34,6 +34,7 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
             setErrorMessage('Please select a category to complete your search')
         } else {
             handleSearchSubmit(selectedCategory, 'categories')
+            setSuccessfulSearch(true);
         }
     }
 
