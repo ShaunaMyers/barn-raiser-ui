@@ -82,7 +82,7 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
                 <input onChange={(e) => setSearchInput(e.target.value)} type="text" name="search" placeholder="Search for need entries" value={searchInput}/> :
                 <select onChange={(e) => setSelectedCategory(e.target.value)} className="select-category" name="selectCategory">
                     <option value="">Please choose an option</option>
-                    <option value="Organizing/Event Management">Organizing/Event Management</option>
+                    <option value="Organizing / Event Management">Organizing/Event Management</option>
                     <option value="Handiwork">Handiwork</option>
                     <option value="Delivery">Delivery</option>
                     <option value="Transportation">Transportation</option>
