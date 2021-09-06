@@ -75,6 +75,7 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
         setSearchInput('');
         setZipCodeBox(false);
         setDateBox(false);
+        setCategoryBox(false);
     }
 
     return ( 
