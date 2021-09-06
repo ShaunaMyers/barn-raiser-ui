@@ -159,7 +159,7 @@ const NeedForm = () => {
         <input onChange={handleInputChange} type="text" name="needTitle" id="needTitle" placeholder="Give your need a title" value={title}/>
         <label for="needDescription">Description:</label>
         <input onChange={handleInputChange} type="text" name="needDescription" id="needDescription" placeholder="Describe your need" value={description} />
-        <label>Category:</label>
+        <label>Categories:</label>
         <input onChange={() => setDeliveryChecked(!deliveryChecked)} type="checkbox" name="delivery-checkbox" id="deliveryCheckbox" checked={deliveryChecked}/>
         <label htmlFor="deliveryCheckbox">Delivery</label>
         <input onChange={() => setHandiworkChecked(!handiworkChecked)} type="checkbox" name="handiwork-checkbox" id="handiworkCheckbox" checked={handiworkChecked}/>
