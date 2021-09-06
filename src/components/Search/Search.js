@@ -11,6 +11,7 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds, searchResults }) => {
     const [selectedCategory, setSelectedCategory] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [successfulSearch, setSuccessfulSearch] = useState(false);
+    const [placeholder, setPlaceholder] = useState('Search for need entries')
 
     const onSearchSubmit = (e) => {
         e.preventDefault();
@@ -81,7 +82,7 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds, searchResults }) => {
     return ( 
             <form>
                 {!categoryBox ?
-                <input onChange={(e) => setSearchInput(e.target.value)} type="text" name="search" placeholder="Search for need entries" value={searchInput}/> :
+                <input onChange={(e) => setSearchInput(e.target.value)} type="text" name="search" placeholder={placeholder} value={searchInput}/> :
                 <select onChange={(e) => setSelectedCategory(e.target.value)} className="select-category" name="selectCategory">
                     <option value="">Please choose an option</option>
                     <option value="Organizing / Event Management">Organizing/Event Management</option>
