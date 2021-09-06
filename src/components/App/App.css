@@ -11,7 +11,7 @@ header {
   background-color: #cae4db;
   display: flex;
   justify-content: space-between;
-  padding: 0.5% 1%;
+  padding: 0.5% 3%;
 }
 
 a {
@@ -80,4 +80,9 @@ button:hover {
 .error-message {
   color: purple;
   text-align: center;
+}
+
+.return-home-button {
+  padding: 10%;
+  width: 120%;
 }
