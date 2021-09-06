@@ -42,8 +42,9 @@ function App() {
       foundResults = data.allActiveNeeds.filter(need => need[type].slice(0, 10) === searchInput);
     } else {
       foundResults = data.allActiveNeeds.filter(need => need[type] === searchInput)
-    }
-    !foundResults.length && setNoMatches('Sorry, no needs match your search. Please enter different search criteria.')
+    };
+    !foundResults.length && setNoMatches('Sorry, no needs match your search. Please enter different search criteria.');
+    setTimeout(() => { setNoMatches(''); }, 3000);
     setSearchResults(foundResults);
   }
 
