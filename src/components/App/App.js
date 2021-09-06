@@ -69,6 +69,13 @@ function App() {
             <Link to="/">
               <h1 className="logo">BarnRaiser</h1>
             </Link>
+            <Route exact path={["/NeedList", "/NeedForm"]} render={() => {
+              return (
+              <Link to="/">
+                <button>Return Home</button>
+              </Link>
+              )
+            }}/>
           </header>
           <Route exact path="/" render={() => {
             return (
