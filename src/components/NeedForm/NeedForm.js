@@ -83,11 +83,16 @@ const NeedForm = () => {
             error = true
             return;
           }
+        } else if (key === "pointOfContact") {
+          if (!variables[key].includes('@') || !variables[key].includes('.')) {
+            error = true
+            return;
+          }
         } else if (key === "endTime") {
             if (endTime < startTime) {
                 error = true;
                 return;
-            } 
+            }
         }
       })
       return error;
@@ -167,7 +172,7 @@ const NeedForm = () => {
         <label htmlFor="organizingCheckbox">Organizing/Event Management</label>
         <input onChange={() => setOtherChecked(!otherChecked)} type="checkbox" name="other-checkbox" id="otherCheckbox" checked={otherChecked}/>
         <label htmlFor="otherCheckbox">Other</label>
-        {!!isError && <ErrorMessage errorMessage="Warning: Your submission could not go through." />}
+        {!!isError && <ErrorMessage errorMessage="Warning: Your submission could not go through. Please check that your inputs are correct and try again." />}
         <button onClick={handleAddNeed} className="submit-button">Submit</button>
       </form>
     );

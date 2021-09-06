@@ -30,8 +30,6 @@ const Need = ({ pointOfContact, title, categories, description, date, startTime,
       <div className="need-info">
         <p className="bold">Volunteers Needed:</p>
         <p>{supporters}</p>
-        <p className="bold">Contact:</p>
-        <p>{pointOfContact}</p>
       </div>
       <div className="button-container">
         <a href={`mailto:${pointOfContact}?subject=${title}`}><button className="volunteer-button">Volunteer</button></a>
