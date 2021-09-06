@@ -4,8 +4,9 @@ import './Search.css';
 
 const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
 
-    const [zipCodeBox, setZipCodeBox] = useState(false);
     const [dateBox, setDateBox] = useState(false);
+    const [zipCodeBox, setZipCodeBox] = useState(false);
+    const [categoryBox, setCategoryBox] = useState(false);
     const [searchInput, setSearchInput] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [successfulSearch, setSuccessfulSearch] = useState(false);
@@ -38,10 +39,16 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
 
     const changeCheckedBoxes = (num) => {
         if (num === 1) {
+            setDateBox(true);
+            setZipCodeBox(false);
+            setCategoryBox(false);
+        } else if (num === 2) {
             setZipCodeBox(true);
             setDateBox(false);
+            setCategoryBox(false);
         } else {
-            setDateBox(true);
+            setCategoryBox(true);
+            setDateBox(false);
             setZipCodeBox(false);
         }
     }
@@ -60,11 +67,22 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
 
     return ( 
             <form>
-                <input onChange={(e) => setSearchInput(e.target.value)} type="text" name="search" placeholder="Search for need entries" value={searchInput}/>
+                {!categoryBox ?
+                <input onChange={(e) => setSearchInput(e.target.value)} type="text" name="search" placeholder="Search for need entries" value={searchInput}/> :
+                <select className="select-category" name="selectCategory">
+                    <option value="choose">--Please choose an option--</option>
+                    <option value="organizing">Organizing/Event Management</option>
+                    <option value="handiwork">Handiwork</option>
+                    <option value="deliver">Delivery</option>
+                    <option value="transportation">Transportation</option>
+                    <option value="foodPrep">Food Prep</option>
+                    <option value="other">Other</option>
+                </select>
+                }
                     <div className="checkbox-container">
-                            <input onChange={() => changeCheckedBoxes(2)} className="checkboxes" type="checkbox" id="dateBox" checked={dateBox}/>
+                            <input onChange={() => changeCheckedBoxes(1)} className="checkboxes" type="checkbox" id="dateBox" checked={dateBox}/>
                             <label className="checkbox-label" htmlFor="dateBox">Date</label>
-                            <input onChange={() => changeCheckedBoxes(1)} className="checkboxes" type="checkbox" id="zipCodeBox" checked={zipCodeBox}/>
+                            <input onChange={() => changeCheckedBoxes(2)} className="checkboxes" type="checkbox" id="zipCodeBox" checked={zipCodeBox}/>
                             <label className="checkbox-label" htmlFor="zipCodeBox">Zip Code</label>
                             <input onChange={() => changeCheckedBoxes(3)} className="checkboxes" type="checkbox" id="categoryBox" checked={categoryBox}/>
                             <label className="checkbox-label" htmlFor="categoryBox">Category</label>
