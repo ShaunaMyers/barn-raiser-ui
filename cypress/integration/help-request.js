@@ -62,7 +62,6 @@ describe('Barn Raiser Help Request Form', () => {
     cy.get('button').contains('Submit').click();
     cy.wait(100);
     cy.visit('http://localhost:3000/NeedList');
-    cy.get('.all-needs').should('be.visible');
     cy.get('h4').contains('Help Me Weed the Garden').should('be.visible');
     cy.get('p').contains('Come help me weed the community garden outside Denver Church!').should('be.visible');
     cy.get('p').contains('80230').should('be.visible');
