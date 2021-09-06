@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import './Search.css';
 
-const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
+const Search = ({ handleSearchSubmit, handleViewAllNeeds, searchResults }) => {
 
     const [dateBox, setDateBox] = useState(false);
     const [zipCodeBox, setZipCodeBox] = useState(false);
@@ -101,7 +101,7 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
                             <label className="checkbox-label" htmlFor="categoryBox">Category</label>
                     </div>
                 <button onClick={onSearchSubmit} className="search-button">Search</button>
-                {successfulSearch && 
+                {(successfulSearch || !!searchResults.length) && 
                 <a onClick={onViewAllNeeds} className="see-all-link">See All Needs</a>
                 }
                 {errorMessage &&
