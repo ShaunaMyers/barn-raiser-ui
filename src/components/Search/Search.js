@@ -17,6 +17,7 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds, searchResults }) => {
         e.preventDefault();
         setErrorMessage('');
         setSuccessfulSearch(false);
+        setPlaceholder('Search for need entries')
         if (categoryBox) {
             handleSearchByCategory()
         } else if (searchInput && zipCodeBox) {
@@ -55,10 +56,13 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds, searchResults }) => {
             setDateBox(true);
             setZipCodeBox(false);
             setCategoryBox(false);
+            setPlaceholder('MM/DD/YYYY')
         } else if (num === 2) {
             setZipCodeBox(true);
             setDateBox(false);
             setCategoryBox(false);
+            setPlaceholder('Search for need entries')
+
         } else {
             setCategoryBox(true);
             setDateBox(false);
