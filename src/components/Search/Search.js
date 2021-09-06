@@ -30,7 +30,11 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
     }
 
     const handleSearchByCategory = () => {
-
+        if (!selectedCategory.length) {
+            setErrorMessage('Please select a category to complete your search')
+        } else {
+            handleSearchSubmit(selectedCategory, 'categories')
+        }
     }
 
     const executeSuccessfulSearch = (input, type) => {
@@ -77,13 +81,13 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds }) => {
                 {!categoryBox ?
                 <input onChange={(e) => setSearchInput(e.target.value)} type="text" name="search" placeholder="Search for need entries" value={searchInput}/> :
                 <select onChange={(e) => setSelectedCategory(e.target.value)} className="select-category" name="selectCategory">
-                    <option value="choose">Please choose an option</option>
-                    <option value="organizing">Organizing/Event Management</option>
-                    <option value="handiwork">Handiwork</option>
-                    <option value="deliver">Delivery</option>
-                    <option value="transportation">Transportation</option>
-                    <option value="foodPrep">Food Prep</option>
-                    <option value="other">Other</option>
+                    <option value="">Please choose an option</option>
+                    <option value="Organizing/Event Management">Organizing/Event Management</option>
+                    <option value="Handiwork">Handiwork</option>
+                    <option value="Delivery">Delivery</option>
+                    <option value="Transportation">Transportation</option>
+                    <option value="Food Prep">Food Prep</option>
+                    <option value="Other">Other</option>
                 </select>
                 }
                     <div className="checkbox-container">
