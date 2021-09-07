@@ -1,6 +1,6 @@
 import './Need.css'
 
-const Need = ({ pointOfContact, title, categories, description, date, startTime, endTime, zipCode, supporters }) => {
+const Need = ({ pointOfContact, title, categories, description, date, startTime, endTime, zipCode, supporters, id }) => {
 
   const formatCategoriesText = (tag, index) => {
     if (categories.length === 2 && index === 0) return `${tag}  •  `

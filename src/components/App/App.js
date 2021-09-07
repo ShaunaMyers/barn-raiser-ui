@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { Route, Link, Redirect } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import NeedDetailPage from '../NeedDetailPage/NeedDetailPage';
 
 export const NEEDS_QUERY = gql`{
   allActiveNeeds{
@@ -34,7 +35,7 @@ function App() {
 
   const handleSearchSubmit = (searchInput, type) => {
     let foundResults = [];
-    if (type === 'categories') {  
+    if (type === 'categories') {
       data.allActiveNeeds.forEach(need => {
         need[type].forEach(category => category.tag === searchInput && foundResults.push(need));
       });
@@ -94,6 +95,11 @@ function App() {
               </section>
             )
           }}/>
+          <Route exact path="/Need/:id" render={({ match }) => {
+            return (
+              <NeedDetailPage need_id={match.params.id} />
+            )
+          }}/>
           <Route exact path="/NeedForm" render={() => {
             return (
               <NeedForm/>
@@ -113,13 +119,13 @@ function App() {
               </section>
               )
             }}/>
-            <Route
-              render={() => {
-                return (
-                  <Redirect to="/" />
-                )
-              }}
-            />
+            // <Route
+            //   render={() => {
+            //     return (
+            //       <Redirect to="/" />
+            //     )
+            //   }}
+            // />
         </main>
     );
   }
