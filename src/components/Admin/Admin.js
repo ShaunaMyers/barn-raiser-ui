@@ -97,12 +97,12 @@ const Admin = () => {
                 </div>
             </form>
             <button onClick={loadCategorySupporters}className="view-category-button">View</button>
-            {/* {!!categorySelected ?
+            {!!categorySelected ?
             <article>
-                {supportersPerCategory} 
-                {allNeeds}
-            </article>
-            } */}
+                {categorySupporters} 
+            </article> :
+            <p>Please select a category to view volunteers</p>
+            }
         </section>
      );
     }
