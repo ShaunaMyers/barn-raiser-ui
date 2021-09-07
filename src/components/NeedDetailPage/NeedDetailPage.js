@@ -31,6 +31,8 @@ const NeedDetailPage = ({need_id}) => {
 
   const { loading, error, data } = useQuery(SINGLE_NEED_QUERY);
   const [ signUpStarted, setSignUpStarted ] = useState(false);
+  const [ volunteerName, setVolunteerName ] = useState('');
+  const [ volunteerEmail, setVolunteerEmail ] = useState('');
   const [ isVolunteered, setIsVolunteered ] = useState(false);
 
   const formatTime = (time) => {
@@ -46,6 +48,12 @@ const NeedDetailPage = ({need_id}) => {
 
   const onClick = () => {
     setSignUpStarted(true)
+  }
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    name === 'name' && setVolunteerName(value);
+    name === 'email' && setVolunteerEmail(value);
   }
 
   if (loading) {
@@ -80,9 +88,9 @@ const NeedDetailPage = ({need_id}) => {
         {!!signUpStarted && <div className="sign-up-container">
             <form className="sign-up-form">
               <label for="name">Your Name:</label>
-              <input type="text" name="name" id="name" placeholder="Your Name"></input>
+              <input onChange={handleInputChange} type="text" name="name" id="name" placeholder="Your Name"></input>
               <label for="email">Your Email:</label>
-              <input type="email" name="email" id="email" placeholder="Email Address"></input>
+              <input onChange={handleInputChange} type="email" name="email" id="email" placeholder="Email Address"></input>
               <button className="submit-button">Sign Up</button>
             </form>
           </div>}
