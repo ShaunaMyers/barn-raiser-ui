@@ -61,9 +61,8 @@ const NeedDetailPage = ({need_id}) => {
         <h3>{need.categories}</h3>
         <h3>Volunteers: {need.supporters.length} / {need.supportersNeeded}</h3>
         <p>{need.description}</p>
-        <button>Contact Button</button>
-        <button>Volunteer Button</button>
-        <p>image??</p>
+        <button className="contact-button">Contact Button</button>
+        <button className="volunteer-button">Volunteer Button</button>
       </section>
     )
   }
