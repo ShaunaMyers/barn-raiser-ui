@@ -22,14 +22,27 @@ const Admin = () => {
     const [transportationChecked, setTransportationChecked] = useState(false);
     const [foodPrepChecked, setFoodPrepChecked] = useState(false);
     const [otherChecked, setOtherChecked] = useState(false);
+    const [categorySelected, setCategorySelected] = useState(0)
 
     const { loading, error, data } = useQuery(CATEGORIES_QUERY);
 
     const handleCheckBoxes = (num) => {
-        const checkboxes = ["OrganizingChecked", "HandiworkChecked", "DeliveryChecked", "TransportationChecked", "FoodPrepChecked", "OtherChecked"]
-        checkboxes.forEach((checkbox, index) => {
+        const checkboxStrings = ["OrganizingChecked", "HandiworkChecked", "DeliveryChecked", "TransportationChecked", "FoodPrepChecked", "OtherChecked"];
+        checkboxStrings.forEach((checkbox, index) => {
             num === index ? eval(`set${checkbox}(true)`) :
             eval(`set${checkbox}(false)`);
+        })
+    }
+
+    const loadCategorySupporters = () => {
+        assignCategorySelected()
+
+    }
+
+    const assignCategorySelected = () => {
+        const checkboxes = [otherChecked, organizingChecked, deliveryChecked, handiworkChecked, transportationChecked, foodPrepChecked];
+        checkboxes.forEach((checkbox, index) => {
+            checkbox && setCategorySelected(index + 1)
         })
     }
 
@@ -72,7 +85,7 @@ const Admin = () => {
                     <label htmlFor="otherCheck">Other</label>
                 </div>
             </form>
-                <button className="view-category-button">View</button>
+                <button onClick={loadCategorySupporters}className="view-category-button">View</button>
         </section>
      );
     }
