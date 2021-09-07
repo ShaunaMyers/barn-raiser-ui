@@ -40,12 +40,12 @@ const Admin = () => {
 
     const loadCategorySupporters = () => {
         assignCategorySelected()
-        const matchingCategories = data.allCategories.filter(category => category.id === categorySelected);
-        const supportersPerCategory = matchingCategories.map(category => {
+        const matchingCategory = data.allCategories.find(category => category.id === categorySelected.toString());
+        const supportersPerCategory = matchingCategory.supporters.map(supporter => {
             return (
             <div className="supporter-entry">
-                <p>Name: {category.name}</p>
-                <p>E-mail: {category.email}</p>
+                <p>Name: {supporter.name}</p>
+                <p>E-mail: {supporter.email}</p>
             </div>
             )
         })
