@@ -167,23 +167,39 @@ const NeedForm = () => {
           <input onChange={handleInputChange} type="text" name="needTitle" id="needTitle" placeholder="Give your need a title" value={title}/>
           <label for="needDescription">Description:</label>
           <input onChange={handleInputChange} type="text" name="needDescription" id="needDescription" placeholder="Describe your need" value={description} />
+          <p className="grouping-title">4. Need Categories:</p>
         </section>
           <article className="categories-grouping">
-            <label>Categories:</label>
-            <input onChange={() => setDeliveryChecked(!deliveryChecked)} type="checkbox" name="delivery-checkbox" id="deliveryCheckbox" checked={deliveryChecked}/>
-            <label htmlFor="deliveryCheckbox">Delivery</label>
-            <input onChange={() => setHandiworkChecked(!handiworkChecked)} type="checkbox" name="handiwork-checkbox" id="handiworkCheckbox" checked={handiworkChecked}/>
-            <label htmlFor="handiworkCheckbox">Handiwork</label>
-            <input onChange={() => setFoodPrepChecked(!foodPrepChecked)} type="checkbox" name="food-prep-checkbox" id="foodPrepCheckbox" checked={foodPrepChecked}/>
-            <label htmlFor="foodPrepCheckbox">Food Prep</label>
-            <input onChange={() => setTransportationChecked(!transportationChecked)} type="checkbox" name="transportation-checkbox" id="transportationCheckbox" checked={transportationChecked}/>
-            <label htmlFor="transportationCheckbox">Transportation</label>
-            <input onChange={() => setOrganizingChecked(!organizingChecked)} type="checkbox" name="organizing-checkbox" id="organizingCheckbox" checked={organizingChecked}/>
-            <label htmlFor="organizingCheckbox">Organizing/Event Management</label>
-            <input onChange={() => setOtherChecked(!otherChecked)} type="checkbox" name="other-checkbox" id="otherCheckbox" checked={otherChecked}/>
-            <label htmlFor="otherCheckbox">Other</label>
-            {!!isError && <ErrorMessage errorMessage="Warning: Your submission could not go through. Please check that your inputs are correct and try again." />}
+            <div className="sub-category-group">
+              <div className="need-input-label">
+                <input onChange={() => setDeliveryChecked(!deliveryChecked)} type="checkbox" name="delivery-checkbox" id="deliveryCheckbox" checked={deliveryChecked}/>
+                <label htmlFor="deliveryCheckbox">Delivery</label>
+              </div>
+              <div className="need-input-label">
+                <input onChange={() => setHandiworkChecked(!handiworkChecked)} type="checkbox" name="handiwork-checkbox" id="handiworkCheckbox" checked={handiworkChecked}/>
+                <label htmlFor="handiworkCheckbox">Handiwork</label>
+              </div>
+              <div className="need-input-label">
+                <input onChange={() => setFoodPrepChecked(!foodPrepChecked)} type="checkbox" name="food-prep-checkbox" id="foodPrepCheckbox" checked={foodPrepChecked}/>
+                <label htmlFor="foodPrepCheckbox">Food Prep</label>
+              </div>
+            </div>
+            <div className="sub-category-group">
+              <div className="need-input-label">
+                <input onChange={() => setTransportationChecked(!transportationChecked)} type="checkbox" name="transportation-checkbox" id="transportationCheckbox" checked={transportationChecked}/>
+                <label htmlFor="transportationCheckbox">Transportation</label>
+              </div>
+              <div className="need-input-label">
+                <input onChange={() => setOrganizingChecked(!organizingChecked)} type="checkbox" name="organizing-checkbox" id="organizingCheckbox" checked={organizingChecked}/>
+                <label htmlFor="organizingCheckbox">Organizing/Event Management</label>
+              </div>
+              <div className="need-input-label">
+                <input onChange={() => setOtherChecked(!otherChecked)} type="checkbox" name="other-checkbox" id="otherCheckbox" checked={otherChecked}/>
+                <label htmlFor="otherCheckbox">Other</label>
+              </div>
+            </div>
           </article>
+            {!!isError && <ErrorMessage errorMessage="Warning: Your submission could not go through. Please check that your inputs are correct and try again." />}
         <button onClick={handleAddNeed} className="submit-button">Submit</button>
       </form>
     );
