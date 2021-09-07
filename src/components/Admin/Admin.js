@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useQuery, gql } from '@apollo/client';
+// import { useQuery, gql } from '@apollo/client';
 import './Admin.css';
 
 // const CATEGORIES_QUERY = gql`{
@@ -31,7 +31,6 @@ const Admin = () => {
     const handleCheckBoxes = (num) => {
         const checkboxes = ["OrganizingChecked", "HandiworkChecked", "DeliveryChecked", "TransportationChecked", "FoodPrepChecked", "OtherChecked"]
         checkboxes.forEach((checkbox, index) => {
-            console.log(checkbox, 'checkbox')
             num === index ? eval(`set${checkbox}(true)`) :
             eval(`set${checkbox}(false)`);
         })
