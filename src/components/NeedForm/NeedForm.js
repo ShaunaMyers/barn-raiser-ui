@@ -143,10 +143,13 @@ const NeedForm = () => {
     return (
       <form>
         {!!isSubmitted && <h3 className="success-message">Success! Your submission has been recorded. <Link to="/NeedList">Take me there.</Link></h3>}
-        <label for="email">Contact Email:</label>
-        <input onChange={handleInputChange} type="email" name="email" id="email" placeholder="Email Address" value={pointOfContact}/>
-        <label for="zipCode">Zip Code:</label>
-        <input onChange={handleInputChange} type="text" name="zipCode" id="zipCode" placeholder="Zip Code" value={zipCode}/>
+        <div className="contact-container">
+          <p className="contact-title">1. Contact & Location Information</p>
+          <label for="email">Email:</label>
+          <input onChange={handleInputChange} type="email" name="email" id="email" placeholder="Email Address" value={pointOfContact}/>
+          <label for="zipCode">Zip Code:</label>
+          <input onChange={handleInputChange} type="text" name="zipCode" id="zipCode" placeholder="Zip Code" value={zipCode}/>
+        </div>
         <label for="needDate">Date:</label>
         <input onChange={handleInputChange} type="date" name="needDate" id="needDate" min={new Date().toISOString().slice(0,10)} max="2025-08-27"/>
         <label for="startTime">Start Time:</label>
