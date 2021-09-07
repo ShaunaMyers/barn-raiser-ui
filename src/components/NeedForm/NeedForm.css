@@ -43,7 +43,16 @@ label {
 
 .time-grouping > input {
   display: flex;
+  margin: 7% 0;
+  height: 35px;
+  width: 500px;
+}
+
+.need-details-grouping > input {
+  display: flex;
+  flex-direction: column;
   margin: 5% 0;
+  margin-bottom: 10%;
   height: 35px;
   width: 500px;
 }
