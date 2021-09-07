@@ -1,6 +1,25 @@
+import { useQuery, gql } from '@apollo/client';
 import './Admin.css';
 
+const CATEGORIES_QUERY = gql`{
+    allCategories{
+        id
+        tag
+        supporters {
+            name
+            email
+        }
+    }
+  }`;
+
 const Admin = () => {
+
+
+    const { loading, error, data } = useQuery(CATEGORIES_QUERY);
+
+    console.log(data, 'data in ADMIN');
+    console.log(error, 'error');
+
     return ( 
         <section className="admin-section">
             <p className="admin-title">View Volunteers by Category:</p>
