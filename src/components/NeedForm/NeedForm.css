@@ -27,6 +27,23 @@ label {
   width: 20%;
 }
 
+.contact-title {
+  min-width: 100%;
+}
+
+.contact-container > input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10%;
+  height: 35px;
+  width: 500px;
+}
+
+.contact-title {
+  color: rgb(10, 146, 205);
+  font-size: 25px;
+}
+
 @media only screen and (max-width: 1110px) {
   input {
     margin: 2%;
