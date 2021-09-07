@@ -43,7 +43,7 @@ const Admin = () => {
         const matchingCategories = data.allCategories.filter(category => category.id === categorySelected);
         const supportersPerCategory = matchingCategories.map(category => {
             return (
-            <div>
+            <div className="supporter-entry">
                 <p>Name: {category.name}</p>
                 <p>E-mail: {category.email}</p>
             </div>
