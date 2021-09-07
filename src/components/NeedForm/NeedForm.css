@@ -16,15 +16,79 @@ input {
   width: 40%;
 }
 
+input:hover {
+  cursor: pointer;
+}
+
 label {
   font-family: "Josefin Sans", sans-serif;
   font-size: 1.25em;
 }
 
 .submit-button {
-  margin: 2% 0% 5%;
-  padding: 2%;
-  width: 20%;
+  border: 1px solid #00303f;
+  font-family: "Lato", sans-serif;
+  font-size: 1.1em;
+  margin: 5% 0%;
+  min-width: 300px;
+  padding: 1%;
+  min-width: 5%;
+}
+
+.contact-grouping > input {
+  display: flex;
+  flex-direction: column;
+  height: 35px;
+  margin: 5% 0;
+  margin-bottom: 10%;
+  width: 500px;
+}
+
+.grouping-title {
+  color: rgb(13, 130, 193);
+  font-size: 25px;
+}
+
+.time-grouping > input {
+  display: flex;
+  height: 35px;
+  margin: 7% 0;
+  width: 500px;
+}
+
+.need-details-grouping > input {
+  display: flex;
+  flex-direction: column;
+  height: 35px;
+  margin: 5% 0;
+  margin-bottom: 10%;
+  width: 500px;
+}
+
+.categories-grouping {
+  display: flex;
+  align-items: center;
+}
+
+.sub-category-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.need-input-label {
+  align-items: center;
+  display: flex;
+}
+
+.need-input-label > input {
+  display: flex;
+  margin: 5%;
+  min-width: 90px;
+}
+
+.need-input-label > label {
+  font-size: 23px;
+  width: 170px;
 }
 
 @media only screen and (max-width: 1110px) {

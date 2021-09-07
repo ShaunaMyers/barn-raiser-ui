@@ -38,7 +38,7 @@ const NeedForm = () => {
     const [date, setDate] = useState('');
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
-    const [supportersNeeded, setSupportersNeeded] = useState(0);
+    const [supportersNeeded, setSupportersNeeded] = useState(1);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [deliveryChecked, setDeliveryChecked] = useState(false);
@@ -143,36 +143,63 @@ const NeedForm = () => {
     return (
       <form>
         {!!isSubmitted && <h3 className="success-message">Success! Your submission has been recorded. <Link to="/NeedList">Take me there.</Link></h3>}
-        <label for="email">Contact Email:</label>
-        <input onChange={handleInputChange} type="email" name="email" id="email" placeholder="Email Address" value={pointOfContact}/>
-        <label for="zipCode">Zip Code:</label>
-        <input onChange={handleInputChange} type="text" name="zipCode" id="zipCode" placeholder="Zip Code" value={zipCode}/>
-        <label for="needDate">Date:</label>
-        <input onChange={handleInputChange} type="date" name="needDate" id="needDate" min={new Date().toISOString().slice(0,10)} max="2025-08-27"/>
-        <label for="startTime">Start Time:</label>
-        <input onChange={handleInputChange} type="time" name="startTime" id="startTime"/>
-        <label for="endTime">End Time:</label>
-        <input onChange={handleInputChange} type="time" name="endTime" id="endTime"/>
-        <label for="volunteersNeeded">Number of Volunteers Needed:</label>
-        <input onChange={handleInputChange} type="number" name="volunteersNeeded" id="volunteersNeeded" min="1" max="100" value={supportersNeeded}/>
-        <label for="needTitle">Title:</label>
-        <input onChange={handleInputChange} type="text" name="needTitle" id="needTitle" placeholder="Give your need a title" value={title}/>
-        <label for="needDescription">Description:</label>
-        <input onChange={handleInputChange} type="text" name="needDescription" id="needDescription" placeholder="Describe your need" value={description} />
-        <label>Categories:</label>
-        <input onChange={() => setDeliveryChecked(!deliveryChecked)} type="checkbox" name="delivery-checkbox" id="deliveryCheckbox" checked={deliveryChecked}/>
-        <label htmlFor="deliveryCheckbox">Delivery</label>
-        <input onChange={() => setHandiworkChecked(!handiworkChecked)} type="checkbox" name="handiwork-checkbox" id="handiworkCheckbox" checked={handiworkChecked}/>
-        <label htmlFor="handiworkCheckbox">Handiwork</label>
-        <input onChange={() => setFoodPrepChecked(!foodPrepChecked)} type="checkbox" name="food-prep-checkbox" id="foodPrepCheckbox" checked={foodPrepChecked}/>
-        <label htmlFor="foodPrepCheckbox">Food Prep</label>
-        <input onChange={() => setTransportationChecked(!transportationChecked)} type="checkbox" name="transportation-checkbox" id="transportationCheckbox" checked={transportationChecked}/>
-        <label htmlFor="transportationCheckbox">Transportation</label>
-        <input onChange={() => setOrganizingChecked(!organizingChecked)} type="checkbox" name="organizing-checkbox" id="organizingCheckbox" checked={organizingChecked}/>
-        <label htmlFor="organizingCheckbox">Organizing/Event Management</label>
-        <input onChange={() => setOtherChecked(!otherChecked)} type="checkbox" name="other-checkbox" id="otherCheckbox" checked={otherChecked}/>
-        <label htmlFor="otherCheckbox">Other</label>
-        {!!isError && <ErrorMessage errorMessage="Warning: Your submission could not go through. Please check that your inputs are correct and try again." />}
+        <section className="contact-grouping">
+          <p className="grouping-title">1. Contact & Location Information</p>
+          <label for="email">Email:</label>
+          <input onChange={handleInputChange} type="email" name="email" id="email" placeholder="Email Address" value={pointOfContact}/>
+          <label for="zipCode">Zip Code:</label>
+          <input onChange={handleInputChange} type="text" name="zipCode" id="zipCode" placeholder="Zip Code" value={zipCode}/>
+        </section>
+        <section className="time-grouping">
+          <p className="grouping-title">2. Date & Time</p>
+          <label for="needDate">Date:</label>
+          <input onChange={handleInputChange} type="date" name="needDate" id="needDate" min={new Date().toISOString().slice(0,10)} max="2025-08-27"/>
+          <label for="startTime">Start Time:</label>
+          <input onChange={handleInputChange} type="time" name="startTime" id="startTime"/>
+          <label for="endTime">End Time:</label>
+          <input onChange={handleInputChange} type="time" name="endTime" id="endTime"/>
+        </section>
+        <section className="need-details-grouping">
+          <p className="grouping-title">3. Details about your need:</p>
+          <label for="volunteersNeeded">Number of Volunteers Needed:</label>
+          <input onChange={handleInputChange} type="number" name="volunteersNeeded" id="volunteersNeeded" min="1" max="100" value={supportersNeeded}/>
+          <label for="needTitle">Title:</label>
+          <input onChange={handleInputChange} type="text" name="needTitle" id="needTitle" placeholder="Give your need a title" value={title}/>
+          <label for="needDescription">Description:</label>
+          <input onChange={handleInputChange} type="text" name="needDescription" id="needDescription" placeholder="Describe your need" value={description} />
+          <p className="grouping-title">4. Need Categories:</p>
+        </section>
+          <article className="categories-grouping">
+            <div className="sub-category-group">
+              <div className="need-input-label">
+                <input onChange={() => setDeliveryChecked(!deliveryChecked)} type="checkbox" name="delivery-checkbox" id="deliveryCheckbox" checked={deliveryChecked}/>
+                <label htmlFor="deliveryCheckbox">Delivery</label>
+              </div>
+              <div className="need-input-label">
+                <input onChange={() => setHandiworkChecked(!handiworkChecked)} type="checkbox" name="handiwork-checkbox" id="handiworkCheckbox" checked={handiworkChecked}/>
+                <label htmlFor="handiworkCheckbox">Handiwork</label>
+              </div>
+              <div className="need-input-label">
+                <input onChange={() => setFoodPrepChecked(!foodPrepChecked)} type="checkbox" name="food-prep-checkbox" id="foodPrepCheckbox" checked={foodPrepChecked}/>
+                <label htmlFor="foodPrepCheckbox">Food Prep</label>
+              </div>
+            </div>
+            <div className="sub-category-group">
+              <div className="need-input-label">
+                <input onChange={() => setTransportationChecked(!transportationChecked)} type="checkbox" name="transportation-checkbox" id="transportationCheckbox" checked={transportationChecked}/>
+                <label htmlFor="transportationCheckbox">Transportation</label>
+              </div>
+              <div className="need-input-label">
+                <input onChange={() => setOrganizingChecked(!organizingChecked)} type="checkbox" name="organizing-checkbox" id="organizingCheckbox" checked={organizingChecked}/>
+                <label htmlFor="organizingCheckbox">Organizing/Event Management</label>
+              </div>
+              <div className="need-input-label">
+                <input onChange={() => setOtherChecked(!otherChecked)} type="checkbox" name="other-checkbox" id="otherCheckbox" checked={otherChecked}/>
+                <label htmlFor="otherCheckbox">Other</label>
+              </div>
+            </div>
+          </article>
+            {!!isError && <ErrorMessage errorMessage="Warning: Your submission could not go through. Please check that your inputs are correct and try again." />}
         <button onClick={handleAddNeed} className="submit-button">Submit</button>
       </form>
     );

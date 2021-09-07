@@ -1,18 +1,17 @@
 import { useState } from 'react';
-// import { useQuery, gql } from '@apollo/client';
+import { useQuery, gql } from '@apollo/client';
 import './Admin.css';
 
-// const CATEGORIES_QUERY = gql`{
-//     allCategories{
-//         id
-//         tag
-//         supporters {
-//             name
-//             email
-//         }
-//     }
-//   }`;
-
+const CATEGORIES_QUERY = gql`{
+    allCategories{
+        id
+        tag
+        supporters {
+            name
+            email
+        }
+    }
+  }`;
 
 const Admin = () => {
 
@@ -22,21 +21,55 @@ const Admin = () => {
     const [transportationChecked, setTransportationChecked] = useState(false);
     const [foodPrepChecked, setFoodPrepChecked] = useState(false);
     const [otherChecked, setOtherChecked] = useState(false);
+    const [categorySelected, setCategorySelected] = useState(0);
+    const [categorySupporters, setCategorySupporters] = useState([]);
+    const [noSupportersMessage, setNoSupportersMessage] = useState('');
 
-    // const { loading, error, data } = useQuery(CATEGORIES_QUERY);
-
-    // console.log(data, 'data in ADMIN');
-    // console.log(error, 'error');
+    
+    const { loading, error, data } = useQuery(CATEGORIES_QUERY);
 
     const handleCheckBoxes = (num) => {
-        const checkboxes = ["OrganizingChecked", "HandiworkChecked", "DeliveryChecked", "TransportationChecked", "FoodPrepChecked", "OtherChecked"]
-        checkboxes.forEach((checkbox, index) => {
+        setNoSupportersMessage('');
+        const checkboxStrings = ["OrganizingChecked", "HandiworkChecked", "DeliveryChecked", "TransportationChecked", "FoodPrepChecked", "OtherChecked"];
+        checkboxStrings.forEach((checkbox, index) => {
             num === index ? eval(`set${checkbox}(true)`) :
             eval(`set${checkbox}(false)`);
         })
     }
 
-    return ( 
+    const loadCategorySupporters = () => {
+        assignCategorySelected()
+        const matchingCategory = data.allCategories.find(category => category.id === categorySelected.toString());
+        const supportersPerCategory = matchingCategory.supporters.map(supporter => {
+            return (
+            <div className="supporter-entry">
+                <p>Name: {supporter.name}</p>
+                <p>E-mail: {supporter.email}</p>
+            </div>
+            )
+        })
+        supportersPerCategory.length ? setCategorySupporters(supportersPerCategory) :
+        setNoSupportersMessage('There are currently no volunteers for this category');
+    }
+
+    const assignCategorySelected = () => {
+        const checkboxes = [otherChecked, organizingChecked, deliveryChecked, handiworkChecked, transportationChecked, foodPrepChecked];
+        checkboxes.forEach((checkbox, index) => {
+            checkbox && setCategorySelected(index + 1)
+        })
+    }
+
+    if (loading) {
+        return(
+          <p>Loading...</p>
+        )
+      } else if (error) {
+        return(
+          <p>error</p>
+        )
+      } else {
+        console.log('data', data)
+        return ( 
         <section className="admin-section">
             <p className="admin-title">View Volunteers by Category:</p>
             <form className="admin-category-form">
@@ -65,9 +98,19 @@ const Admin = () => {
                     <label htmlFor="otherCheck">Other</label>
                 </div>
             </form>
-                <button className="view-category-button">View</button>
+            <button onClick={loadCategorySupporters}className="view-category-button">Search</button>
+            {!!categorySelected  && !noSupportersMessage.length &&
+            <article>
+                {categorySupporters} 
+            </article> 
+            }
+            {!!noSupportersMessage.length ?
+                <p className="admin-text">{noSupportersMessage}</p> :
+                <p className="admin-text">Please select a category and search to view volunteers</p>
+            }
         </section>
      );
+    }
 }
  
 export default Admin;
