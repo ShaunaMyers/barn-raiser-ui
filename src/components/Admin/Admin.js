@@ -2,12 +2,12 @@ import './Admin.css';
 
 const Admin = () => {
     return ( 
-        <section>
-            <p>View Supporters By Category:</p>
-            <form className="Admin-category-form">
+        <section className="admin-section">
+            <p className="admin-title">View Volunteers by Category:</p>
+            <form className="admin-category-form">
                 <div className="inputs-labels">
                     <input className="checkboxes" type="checkbox" id="organizingCheck"/>
-                    <label htmlFor="organizingCheck">Organizing / Event Management</label>
+                    <label htmlFor="organizingCheck">Organizing/Event Management</label>
                 </div>
                 <div className="inputs-labels">
                     <input className="checkboxes" type="checkbox" id="handiworkCheck"/>
@@ -29,8 +29,8 @@ const Admin = () => {
                     <input className="checkboxes" type="checkbox" id="otherCheck"/>
                     <label htmlFor="otherCheck">Other</label>
                 </div>
-                <button className="view-category-button">View</button>
             </form>
+                <button className="view-category-button">View</button>
         </section>
      );
 }
