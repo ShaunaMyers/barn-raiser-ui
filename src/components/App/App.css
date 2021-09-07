@@ -31,6 +31,7 @@ button {
 button:hover {
   background-color: #dcae1d;
   color: #000000;
+  cursor: pointer;
 }
 
 .main-container {

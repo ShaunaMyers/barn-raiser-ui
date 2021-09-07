@@ -16,6 +16,10 @@ input {
   width: 40%;
 }
 
+input:hover {
+  cursor: pointer;
+}
+
 label {
   font-family: "Josefin Sans", sans-serif;
   font-size: 1.25em;
@@ -27,7 +31,7 @@ label {
   font-size: 1.1em;
   margin: 5% 0%;
   min-width: 300px;
-  padding: 2%;
+  padding: 1%;
   min-width: 5%;
 }
 
