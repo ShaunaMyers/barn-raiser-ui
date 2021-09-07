@@ -1,0 +1,33 @@
+.admin-title {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.admin-category-form {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1%;
+}
+
+.admin-section {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs-labels {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-width: 30%;
+}
+
+.view-category-button {
+  border: 1px solid #00303f;
+  font-family: "Lato", sans-serif;
+  font-size: 1.1em;
+  margin: 2%;
+  min-width: 150px;
+  padding: 0.5%;
+  width: 7%;
+}

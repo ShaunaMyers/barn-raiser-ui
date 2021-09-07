@@ -2,8 +2,9 @@ import './App.css';
 import NeedForm from '../NeedForm/NeedForm';
 import NeedList from '../NeedList/NeedList';
 import Search from '../Search/Search';
+import Admin from '../Admin/Admin';
 import { useState } from 'react';
-import { Route, Link, Redirect } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import NeedDetailPage from '../NeedDetailPage/NeedDetailPage';
@@ -67,9 +68,13 @@ function App() {
     return (
         <main>
           <header>
-            <Link to="/">
-              <h1 className="logo">BarnRaiser</h1>
-            </Link>
+            <Route exact path={["/", "/NeedList", "/NeedForm"]} render={() => {
+              return (
+                <Link to="/">
+                  <h1 className="logo">BarnRaiser</h1>
+                </Link>
+              )
+            }}/>
             <Route exact path={["/NeedList", "/NeedForm"]} render={() => {
               return (
               <Link to="/">
@@ -77,7 +82,19 @@ function App() {
               </Link>
               )
             }}/>
+            <Route exact path="/AdminView" render={() => {
+              return (
+                <Link to="/">
+                  <h1 className="logo">BarnRaiser- Administrator View</h1>
+                </Link>
+              )
+            }}/>
           </header>
+          <Route exact path="/AdminView" render={() => {
+            return (
+              <Admin />
+            )
+          }}/>
           <Route exact path="/" render={() => {
             return (
               <section className="main-container">
