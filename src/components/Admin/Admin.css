@@ -1,5 +1,11 @@
 .admin-title {
-  font-size: 25px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.admin-text {
+  color: purple;
+  font-size: 20px;
   font-weight: bold;
 }
 
