@@ -31,6 +31,14 @@ const NeedDetailPage = ({need_id}) => {
 
   const { loading, error, data } = useQuery(SINGLE_NEED_QUERY);
 
+  const formatTime = (time) => {
+    return "TIME"
+  }
+
+  const formatDate = (date) => {
+    return "DATE"
+  }
+
   if (loading) {
     return(
       <p>Loading...</p>
@@ -40,17 +48,18 @@ const NeedDetailPage = ({need_id}) => {
       <p>error</p>
     )
   } else {
-    console.log(data);
+    const need = data.need;
+    console.log(need);
     return (
       <section className="need-details">
-        <h2>Title!</h2>
-        <h3>id?</h3>
-        <h3>Date</h3>
-        <h3>Start Time - End Time</h3>
-        <h3>Zip Code</h3>
-        <h3>Categories</h3>
-        <h3>Volunteers Needed</h3>
-        <p>Description description description description description description description description description description description</p>
+        <h2>{need.title}</h2>
+        <h3>{need.id}</h3>
+        <h3>{formatDate(need.startTime)}</h3>
+        <h3>{formatTime(need.startTime)} - {formatTime(need.endTime)}</h3>
+        <h3>{need.zipCode}</h3>
+        <h3>{need.categories}</h3>
+        <h3>Volunteers Needed: {need.supportersNeeded}</h3>
+        <p>{need.description}</p>
         <button>Contact Button</button>
         <button>Volunteer Button</button>
         <p>image??</p>
