@@ -119,15 +119,6 @@ function App() {
               </section>
               )
             }}/>
-            <Route
-              exact
-              path="/:garbage"
-              render={() => {
-                return (
-                  <Redirect to="/" />
-                )
-              }}
-            />
         </main>
     );
   }
