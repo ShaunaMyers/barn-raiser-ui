@@ -24,11 +24,13 @@ const Admin = () => {
     const [otherChecked, setOtherChecked] = useState(false);
     const [categorySelected, setCategorySelected] = useState(0);
     const [categorySupporters, setCategorySupporters] = useState([]);
+    const [noSupportersMessage, setNoSupportersMessage] = useState('');
 
     
     const { loading, error, data } = useQuery(CATEGORIES_QUERY);
 
     const handleCheckBoxes = (num) => {
+        setNoSupportersMessage('');
         const checkboxStrings = ["OrganizingChecked", "HandiworkChecked", "DeliveryChecked", "TransportationChecked", "FoodPrepChecked", "OtherChecked"];
         checkboxStrings.forEach((checkbox, index) => {
             num === index ? eval(`set${checkbox}(true)`) :
@@ -47,7 +49,8 @@ const Admin = () => {
             </div>
             )
         })
-        setCategorySupporters(supportersPerCategory);
+        supportersPerCategory.length ? setCategorySupporters(supportersPerCategory) :
+        setNoSupportersMessage('There are currently no volunteers for this category');
     }
 
     const assignCategorySelected = () => {
@@ -96,12 +99,15 @@ const Admin = () => {
                     <label htmlFor="otherCheck">Other</label>
                 </div>
             </form>
-            <button onClick={loadCategorySupporters}className="view-category-button">View</button>
-            {!!categorySelected ?
+            <button onClick={loadCategorySupporters}className="view-category-button">Search</button>
+            {!!categorySelected  && !noSupportersMessage.length &&
             <article>
                 {categorySupporters} 
-            </article> :
-            <p>Please select a category to view volunteers</p>
+            </article> 
+            }
+            {!!noSupportersMessage.length ?
+                <p className="admin-text">{noSupportersMessage}</p> :
+                <p className="admin-text">Please select a category and search to view volunteers</p>
             }
         </section>
      );
