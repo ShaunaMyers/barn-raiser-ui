@@ -33,7 +33,17 @@ const Admin = () => {
         })
     }
 
-    return ( 
+    if (loading) {
+        return(
+          <p>Loading...</p>
+        )
+      } else if (error) {
+        return(
+          <p>error</p>
+        )
+      } else {
+        console.log('data', data)
+        return ( 
         <section className="admin-section">
             <p className="admin-title">View Volunteers by Category:</p>
             <form className="admin-category-form">
@@ -65,6 +75,7 @@ const Admin = () => {
                 <button className="view-category-button">View</button>
         </section>
      );
+    }
 }
  
 export default Admin;
