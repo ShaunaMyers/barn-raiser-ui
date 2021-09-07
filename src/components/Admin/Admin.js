@@ -13,7 +13,6 @@ const CATEGORIES_QUERY = gql`{
     }
   }`;
 
-
 const Admin = () => {
 
     const [organizingChecked, setOrganizingChecked] = useState(false);

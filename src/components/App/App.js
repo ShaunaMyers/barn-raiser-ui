@@ -64,7 +64,6 @@ function App() {
       <p>error</p>
     )
   } else {
-    console.log('data', data)
     return (
         <main>
           <header>
