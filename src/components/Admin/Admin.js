@@ -22,8 +22,10 @@ const Admin = () => {
     const [transportationChecked, setTransportationChecked] = useState(false);
     const [foodPrepChecked, setFoodPrepChecked] = useState(false);
     const [otherChecked, setOtherChecked] = useState(false);
-    const [categorySelected, setCategorySelected] = useState(0)
+    const [categorySelected, setCategorySelected] = useState(0);
+    const [categorySupporters, setCategorySupporters] = useState([]);
 
+    
     const { loading, error, data } = useQuery(CATEGORIES_QUERY);
 
     const handleCheckBoxes = (num) => {
@@ -36,7 +38,16 @@ const Admin = () => {
 
     const loadCategorySupporters = () => {
         assignCategorySelected()
-
+        const matchingCategories = data.allCategories.filter(category => category.id === categorySelected);
+        const supportersPerCategory = matchingCategories.map(category => {
+            return (
+            <div>
+                <p>Name: {category.name}</p>
+                <p>E-mail: {category.email}</p>
+            </div>
+            )
+        })
+        setCategorySupporters(supportersPerCategory);
     }
 
     const assignCategorySelected = () => {
@@ -85,7 +96,13 @@ const Admin = () => {
                     <label htmlFor="otherCheck">Other</label>
                 </div>
             </form>
-                <button onClick={loadCategorySupporters}className="view-category-button">View</button>
+            <button onClick={loadCategorySupporters}className="view-category-button">View</button>
+            {/* {!!categorySelected ?
+            <article>
+                {supportersPerCategory} 
+                {allNeeds}
+            </article>
+            } */}
         </section>
      );
     }
