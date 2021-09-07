@@ -30,9 +30,9 @@ label {
 .contact-grouping > input {
   display: flex;
   flex-direction: column;
+  height: 35px;
   margin: 5% 0;
   margin-bottom: 10%;
-  height: 35px;
   width: 500px;
 }
 
@@ -43,18 +43,45 @@ label {
 
 .time-grouping > input {
   display: flex;
-  margin: 7% 0;
   height: 35px;
+  margin: 7% 0;
   width: 500px;
 }
 
 .need-details-grouping > input {
   display: flex;
   flex-direction: column;
+  height: 35px;
   margin: 5% 0;
   margin-bottom: 10%;
-  height: 35px;
   width: 500px;
+}
+
+.categories-grouping {
+  display: flex;
+}
+
+.sub-category-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.need-input-label {
+  align-items: center;
+  display: flex;
+}
+
+.need-input-label > input {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 4%;
+  min-width: 190px;
+}
+
+.need-input-label > label {
+  font-size: 23px;
+  width: 150px;
 }
 
 @media only screen and (max-width: 1110px) {
