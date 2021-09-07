@@ -119,6 +119,7 @@ function App() {
               </section>
               )
             }}/>
+          {
             // <Route
             //   render={() => {
             //     return (
@@ -126,6 +127,7 @@ function App() {
             //     )
             //   }}
             // />
+          }
         </main>
     );
   }
