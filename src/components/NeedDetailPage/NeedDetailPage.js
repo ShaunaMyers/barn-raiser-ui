@@ -67,7 +67,7 @@ const NeedDetailPage = ({need_id}) => {
         </div>
         <div className="volunteer-action-container">
           <a href={`mailto:${need.pointOfContact}?subject=RE:${need.title}`}><button className="contact-button">Contact Requester</button></a>
-          <NavLink to="/"><button className="volunteer-button">Sign Up to Volunteer</button></NavLink>
+          <button className="volunteer-button">Sign Up to Volunteer</button>
         </div>
       </section>
     )
