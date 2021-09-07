@@ -1,17 +1,17 @@
 import { useState } from 'react';
-// import { useQuery, gql } from '@apollo/client';
+import { useQuery, gql } from '@apollo/client';
 import './Admin.css';
 
-// const CATEGORIES_QUERY = gql`{
-//     allCategories{
-//         id
-//         tag
-//         supporters {
-//             name
-//             email
-//         }
-//     }
-//   }`;
+const CATEGORIES_QUERY = gql`{
+    allCategories{
+        id
+        tag
+        supporters {
+            name
+            email
+        }
+    }
+  }`;
 
 
 const Admin = () => {
@@ -23,10 +23,7 @@ const Admin = () => {
     const [foodPrepChecked, setFoodPrepChecked] = useState(false);
     const [otherChecked, setOtherChecked] = useState(false);
 
-    // const { loading, error, data } = useQuery(CATEGORIES_QUERY);
-
-    // console.log(data, 'data in ADMIN');
-    // console.log(error, 'error');
+    const { loading, error, data } = useQuery(CATEGORIES_QUERY);
 
     const handleCheckBoxes = (num) => {
         const checkboxes = ["OrganizingChecked", "HandiworkChecked", "DeliveryChecked", "TransportationChecked", "FoodPrepChecked", "OtherChecked"]
