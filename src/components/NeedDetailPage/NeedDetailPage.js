@@ -32,12 +32,12 @@ const NeedDetailPage = ({need_id}) => {
 // createSupporter($name: String!, $email: String!, $id: ID!)
 
   const ADD_SUPPORTER = gql`
-    mutation  {
+    mutation createSupporter($name: String!, $email: String!, $need: ID!) {
     createSupporter(input:
           {
-            name: "test"
-            email: "test"
-            need: 1
+            name: $name
+            email: $email
+            need: $need
           }
         )
 
@@ -113,11 +113,11 @@ const NeedDetailPage = ({need_id}) => {
     setIsError(false)
     setIsVolunteered(false)
     //NOTE: NOT SURE IF CORRECT FORMAT
-    const newSupporter = {
+    const newSupporter = { variables: {
 		      name: volunteerName,
 		      email: volunteerEmail,
 		      need: need_id
-		    }
+		    }}
     const isThereAnError = checkIfError(newSupporter);
     if (isThereAnError) {
       setIsError(true);
