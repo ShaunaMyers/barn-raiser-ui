@@ -2,6 +2,7 @@ import './App.css';
 import NeedForm from '../NeedForm/NeedForm';
 import NeedList from '../NeedList/NeedList';
 import Search from '../Search/Search';
+import Admin from '../Admin/Admin';
 import { useState } from 'react';
 import { Route, Link, Redirect } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
@@ -78,6 +79,11 @@ function App() {
               )
             }}/>
           </header>
+          <Route exact path="/AdminView" render={() => {
+            return (
+              <Admin />
+            )
+          }}/>
           <Route exact path="/" render={() => {
             return (
               <section className="main-container">
