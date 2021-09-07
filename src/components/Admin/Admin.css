@@ -1,9 +1,25 @@
-/* .admin-category-form {
+.admin-title {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.admin-category-form {
   display: flex;
-} */
+  flex-direction: row;
+  margin-top: 1%;
+}
+
+.admin-section {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
 
 .inputs-labels {
+  align-items: center;
   display: flex;
+  justify-content: center;
+  min-width: 30%;
 }
 
 .view-category-button {
