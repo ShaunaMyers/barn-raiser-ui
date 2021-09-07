@@ -1,9 +1,9 @@
 import './NeedDetailPage.css'
 
-const NeedDetailPage = ({ pointOfContact, title, categories, description, date, startTime, endTime, zipCode, supporters }) => {
+const NeedDetailPage = (need_id) => {
   return (
     <section className="need-details">
-      
+      <h2>ID!</h2>
     </section>
   )
 }
