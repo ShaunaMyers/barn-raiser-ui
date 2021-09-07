@@ -59,6 +59,7 @@ label {
 
 .categories-grouping {
   display: flex;
+  align-items: center;
 }
 
 .sub-category-group {
@@ -72,16 +73,14 @@ label {
 }
 
 .need-input-label > input {
-  align-items: center;
   display: flex;
-  justify-content: center;
-  margin: 4%;
-  min-width: 190px;
+  margin: 5%;
+  min-width: 90px;
 }
 
 .need-input-label > label {
   font-size: 23px;
-  width: 150px;
+  width: 170px;
 }
 
 @media only screen and (max-width: 1110px) {
