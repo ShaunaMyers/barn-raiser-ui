@@ -27,21 +27,25 @@ label {
   width: 20%;
 }
 
-.contact-title {
-  min-width: 100%;
-}
-
-.contact-container > input {
+.contact-grouping > input {
   display: flex;
   flex-direction: column;
+  margin: 5% 0;
   margin-bottom: 10%;
   height: 35px;
   width: 500px;
 }
 
-.contact-title {
+.grouping-title {
   color: rgb(10, 146, 205);
   font-size: 25px;
+}
+
+.time-grouping > input {
+  display: flex;
+  margin: 5% 0;
+  height: 35px;
+  width: 500px;
 }
 
 @media only screen and (max-width: 1110px) {
