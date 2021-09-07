@@ -4,7 +4,6 @@ import { useQuery, gql } from '@apollo/client';
 import { NavLink } from 'react-router-dom';
 
 const NeedDetailPage = ({need_id}) => {
-  //call API to get need corresponding to this id
   const SINGLE_NEED_QUERY = gql`
     { need(id:${need_id})
     {
@@ -34,7 +33,8 @@ const NeedDetailPage = ({need_id}) => {
 
   const formatTime = (time) => {
     const splitTime = time.split(" ")
-    return splitTime[1]
+    const reformattedTime = splitTime[1]
+    return reformattedTime
   }
 
   const formatDate = (date) => {
@@ -54,17 +54,21 @@ const NeedDetailPage = ({need_id}) => {
     const need = data.need;
     return (
       <section className="need-details">
-        <NavLink to="/NeedList"><button>Back</button></NavLink>
-        <h2>{need.title}</h2>
-        <h3>{need.id}</h3>
-        <h3>{formatDate(need.startTime)}</h3>
-        <h3>{formatTime(need.startTime)} - {formatTime(need.endTime)}</h3>
-        <h3>{need.zipCode}</h3>
-        <h3>{need.categories}</h3>
-        <h3>Volunteers: {need.supporters.length} / {need.supportersNeeded}</h3>
-        <p>{need.description}</p>
-        <button className="contact-button">Contact Button</button>
-        <button className="volunteer-button">Volunteer Button</button>
+        <div className="detail-text">
+          <NavLink to="/NeedList"><button className="back-button">Back</button></NavLink>
+          <h2>{need.title}</h2>
+          <h3>{need.id}</h3>
+          <h3>{formatDate(need.startTime)}</h3>
+          <h3>{formatTime(need.startTime)} - {formatTime(need.endTime)}</h3>
+          <h3>{need.zipCode}</h3>
+          <h3>{need.categories}</h3>
+          <h3>Volunteers: {need.supporters.length} / {need.supportersNeeded}</h3>
+          <p>{need.description}</p>
+        </div>
+        <div className="volunteer-action-container">
+          <button className="contact-button">Contact Requester</button>
+          <button className="volunteer-button">Sign Up to Volunteer</button>
+        </div>
       </section>
     )
   }
