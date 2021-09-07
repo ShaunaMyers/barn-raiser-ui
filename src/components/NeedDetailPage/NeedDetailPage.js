@@ -1,5 +1,5 @@
 import './NeedDetailPage.css'
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { NavLink } from 'react-router-dom';
 
@@ -30,6 +30,8 @@ const NeedDetailPage = ({need_id}) => {
   }`;
 
   const { loading, error, data } = useQuery(SINGLE_NEED_QUERY);
+  const [ signUpStarted, setSignUpStarted ] = useState(false);
+  const [ isVolunteered, setIsVolunteered ] = useState(false);
 
   const formatTime = (time) => {
     const splitTime = time.split(" ")
@@ -40,6 +42,10 @@ const NeedDetailPage = ({need_id}) => {
   const formatDate = (date) => {
     const splitDate = date.split(" ")
     return splitDate[0]
+  }
+
+  const onClick = () => {
+    setSignUpStarted(true)
   }
 
   if (loading) {
@@ -53,22 +59,29 @@ const NeedDetailPage = ({need_id}) => {
   } else {
     const need = data.need;
     return (
-      <section className="need-details">
-        <div className="detail-text">
-          <NavLink to="/NeedList"><button className="back-button">Back</button></NavLink>
-          <h2>{need.title}</h2>
-          <h3>{need.id}</h3>
-          <h3>{formatDate(need.startTime)}</h3>
-          <h3>{formatTime(need.startTime)} - {formatTime(need.endTime)}</h3>
-          <h3>{need.zipCode}</h3>
-          <h3>{need.categories}</h3>
-          <h3>Volunteers: {need.supporters.length} / {need.supportersNeeded}</h3>
-          <p>{need.description}</p>
+      <section>
+        <div className="need-details">
+          <div className="detail-text">
+            <NavLink to="/NeedList"><button className="back-button">Back</button></NavLink>
+            <h2>{need.title}</h2>
+            <h3>{need.id}</h3>
+            <h3>{formatDate(need.startTime)}</h3>
+            <h3>{formatTime(need.startTime)} - {formatTime(need.endTime)}</h3>
+            <h3>{need.zipCode}</h3>
+            <h3>{need.categories}</h3>
+            <h3>Volunteers: {need.supporters.length} / {need.supportersNeeded}</h3>
+            <p>{need.description}</p>
+          </div>
+          <div className="volunteer-action-container">
+            <a href={`mailto:${need.pointOfContact}?subject=RE:${need.title}`}><button className="contact-button">Contact Requester</button></a>
+            <button className="volunteer-button" onClick={onClick}>Sign Up to Volunteer</button>
+          </div>
         </div>
-        <div className="volunteer-action-container">
-          <a href={`mailto:${need.pointOfContact}?subject=RE:${need.title}`}><button className="contact-button">Contact Requester</button></a>
-          <button className="volunteer-button">Sign Up to Volunteer</button>
-        </div>
+        {!!signUpStarted && <div className="sign-up-container">
+            <form className="sign-up-form">
+              <input></input>
+            </form>
+          </div>}
       </section>
     )
   }
