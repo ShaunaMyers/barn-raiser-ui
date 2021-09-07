@@ -1,6 +1,7 @@
 import './NeedDetailPage.css'
 import { useState } from 'react';
 import { useQuery, gql } from '@apollo/client';
+import { NavLink } from 'react-router-dom';
 
 const NeedDetailPage = ({need_id}) => {
   //call API to get need corresponding to this id
@@ -53,6 +54,7 @@ const NeedDetailPage = ({need_id}) => {
     const need = data.need;
     return (
       <section className="need-details">
+        <NavLink to="/NeedList"><button>Back</button></NavLink>
         <h2>{need.title}</h2>
         <h3>{need.id}</h3>
         <h3>{formatDate(need.startTime)}</h3>
