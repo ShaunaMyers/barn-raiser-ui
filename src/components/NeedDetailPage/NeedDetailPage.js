@@ -32,11 +32,13 @@ const NeedDetailPage = ({need_id}) => {
   const { loading, error, data } = useQuery(SINGLE_NEED_QUERY);
 
   const formatTime = (time) => {
-    return "TIME"
+    const splitTime = time.split(" ")
+    return splitTime[1]
   }
 
   const formatDate = (date) => {
-    return "DATE"
+    const splitDate = date.split(" ")
+    return splitDate[0]
   }
 
   if (loading) {
@@ -49,7 +51,6 @@ const NeedDetailPage = ({need_id}) => {
     )
   } else {
     const need = data.need;
-    console.log(need);
     return (
       <section className="need-details">
         <h2>{need.title}</h2>
@@ -58,7 +59,7 @@ const NeedDetailPage = ({need_id}) => {
         <h3>{formatTime(need.startTime)} - {formatTime(need.endTime)}</h3>
         <h3>{need.zipCode}</h3>
         <h3>{need.categories}</h3>
-        <h3>Volunteers Needed: {need.supportersNeeded}</h3>
+        <h3>Volunteers: {need.supporters.length} / {need.supportersNeeded}</h3>
         <p>{need.description}</p>
         <button>Contact Button</button>
         <button>Volunteer Button</button>
