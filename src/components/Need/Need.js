@@ -1,4 +1,5 @@
 import './Need.css'
+import { NavLink } from 'react-router-dom'
 
 const Need = ({ pointOfContact, title, categories, description, date, startTime, endTime, zipCode, supporters, id }) => {
 
@@ -31,7 +32,7 @@ const Need = ({ pointOfContact, title, categories, description, date, startTime,
         <p>{supporters}</p>
       </div>
       <div className="button-container">
-        <button className="more-info-button">More Info</button>
+        <NavLink to={`/Need/${id}`}><button className="more-info-button">More Info</button></NavLink>
       </div>
     </div>
    );
