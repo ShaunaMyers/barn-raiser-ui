@@ -52,12 +52,12 @@ h4 {
   width: 33%;
 }
 
-.volunteer-button {
+.more-info-button {
   background-color: #dcae1d;
   color: #000000;
 }
 
-.volunteer-button:hover {
+.more-info-button:hover {
   background-color: #00303f;
   color: #ffffff;
 }
