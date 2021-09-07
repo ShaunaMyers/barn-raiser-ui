@@ -114,7 +114,6 @@ const NeedForm = () => {
       setIsError(false)
       setIsSubmitted(false)
       const newNeed = { variables: { pointOfContact, title, description, startTime: formatTimeWithDate(startTime), endTime: formatTimeWithDate(endTime), zipCode, supportersNeeded, categories: findCategoryIds()} };
-      console.log(newNeed, "NEW NEED")
       const isThereAnError = checkUserInput(newNeed)
       if (isThereAnError) {
         setIsError(true);

@@ -1,6 +1,6 @@
 import './NeedDetailPage.css'
 import { useState, useCallback } from 'react';
-import { useQuery, gql } from '@apollo/client';
+import { useQuery, useMutation, gql } from '@apollo/client';
 import { NavLink } from 'react-router-dom';
 
 const NeedDetailPage = ({need_id}) => {
@@ -29,11 +29,55 @@ const NeedDetailPage = ({need_id}) => {
     }
   }`;
 
+// createSupporter($name: String!, $email: String!, $id: ID!)
+
+  const ADD_SUPPORTER = gql`
+    mutation  {
+    createSupporter(input:
+          {
+            name: "test"
+            email: "test"
+            need: 1
+          }
+        )
+
+        {
+          supporter {
+          id
+          name
+          email
+          need
+            {
+              id
+              title
+              description
+              pointOfContact
+              startTime
+              endTime
+              zipCode
+              supportersNeeded
+              status
+              categories{
+            id
+            tag
+          }
+            }
+        }
+        errors
+      }
+    }
+  `;
+
   const { loading, error, data } = useQuery(SINGLE_NEED_QUERY);
   const [ signUpStarted, setSignUpStarted ] = useState(false);
   const [ volunteerName, setVolunteerName ] = useState('');
   const [ volunteerEmail, setVolunteerEmail ] = useState('');
+  const [ isError, setIsError ] = useState(false);
   const [ isVolunteered, setIsVolunteered ] = useState(false);
+
+  const [addSupporter, { supporterLoading, supporterError }] = useMutation(ADD_SUPPORTER, {
+    refetchQueries: [{ query: SINGLE_NEED_QUERY }],
+  });
 
   const formatTime = (time) => {
     const splitTime = time.split(" ")
@@ -54,6 +98,35 @@ const NeedDetailPage = ({need_id}) => {
     const { name, value } = e.target;
     name === 'name' && setVolunteerName(value);
     name === 'email' && setVolunteerEmail(value);
+  }
+
+  const clearInputs = () => {
+    setSignUpStarted(false)
+  }
+
+  const checkIfError = (supporter) => {
+    return false;
+  }
+
+  const handleAddSupporter = (e) => {
+    e.preventDefault()
+    setIsError(false)
+    setIsVolunteered(false)
+    //NOTE: NOT SURE IF CORRECT FORMAT
+    const newSupporter = {
+		      name: volunteerName,
+		      email: volunteerEmail,
+		      need: need_id
+		    }
+    const isThereAnError = checkIfError(newSupporter);
+    if (isThereAnError) {
+      setIsError(true);
+      return false;
+    } else {
+      addSupporter(newSupporter);
+      setIsVolunteered(true);
+      clearInputs();
+    }
   }
 
   if (loading) {
@@ -91,7 +164,7 @@ const NeedDetailPage = ({need_id}) => {
               <input onChange={handleInputChange} type="text" name="name" id="name" placeholder="Your Name"></input>
               <label for="email">Your Email:</label>
               <input onChange={handleInputChange} type="email" name="email" id="email" placeholder="Email Address"></input>
-              <button className="submit-button">Sign Up</button>
+              <button onClick={handleAddSupporter} className="submit-button">Sign Up</button>
             </form>
           </div>}
         {!!isVolunteered && <div className="signed-up-message">
