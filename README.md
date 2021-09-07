@@ -13,7 +13,7 @@
 - [Contributors](#contributors)
 
 ## Overview and Project Goals
-Welcome to BarnRaiser - where your community can come together to ask for help and offer up help! This application makes it possible for individual community members to post a request via our form, to ask for help with a particular need. User looking to help others can then view a list of needs and can sign up for needs.
+Welcome to BarnRaiser - where your community can come together to ask for help and offer up help! This application makes it possible for individual community members to post requests asking for help, via our form. Users looking to help others can then view a list of needs and can sign up for needs.
 
 The goal of this Mod 4 Capstone [project](https://mod4.turing.edu/projects/capstone/) was to unite the backend and front end cohorts. We completed this project in 2 1/2 weeks while challenging ourselves to learn new technologies. We focused on high-level planning and cross-communication between the backend and frontend group members while building out a completely functional application.
 
