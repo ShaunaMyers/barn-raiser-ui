@@ -79,8 +79,15 @@ const NeedDetailPage = ({need_id}) => {
         </div>
         {!!signUpStarted && <div className="sign-up-container">
             <form className="sign-up-form">
-              <input></input>
+              <label for="name">Your Name:</label>
+              <input type="text" name="name" id="name" placeholder="Your Name"></input>
+              <label for="email">Your Email:</label>
+              <input type="email" name="email" id="email" placeholder="Email Address"></input>
+              <button className="submit-button">Sign Up</button>
             </form>
+          </div>}
+        {!!isVolunteered && <div className="signed-up-message">
+            <h2>Thank you for signing up to help!</h2>
           </div>}
       </section>
     )
