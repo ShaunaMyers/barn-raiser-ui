@@ -107,7 +107,7 @@ const Search = ({ handleSearchSubmit, handleViewAllNeeds, searchResults }) => {
                     </div>
                 <button onClick={onSearchSubmit} className="search-button">Search</button>
                 {(successfulSearch || !!searchResults.length) && 
-                <a onClick={onViewAllNeeds} className="see-all-link">See All Needs</a>
+                <button onClick={onViewAllNeeds} className="see-all-button">See All Needs</button>
                 }
                 {errorMessage &&
                     <ErrorMessage errorMessage={errorMessage}/>
