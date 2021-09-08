@@ -21,9 +21,11 @@ const Admin = () => {
     const [transportationChecked, setTransportationChecked] = useState(false);
     const [foodPrepChecked, setFoodPrepChecked] = useState(false);
     const [otherChecked, setOtherChecked] = useState(false);
-    const [categorySelected, setCategorySelected] = useState(0);
+    // const [categorySelected, setCategorySelected] = useState(0);
     const [categorySupporters, setCategorySupporters] = useState([]);
     const [noSupportersMessage, setNoSupportersMessage] = useState('');
+
+    let categorySelected = 0;
 
     
     const { loading, error, data } = useQuery(CATEGORIES_QUERY);
@@ -36,10 +38,11 @@ const Admin = () => {
             eval(`set${checkbox}(false)`);
         })
     }
-
+    
     const loadCategorySupporters = () => {
         assignCategorySelected()
-        const matchingCategory = data.allCategories.find(category => category.id === categorySelected.toString());
+        console.log(categorySelected, 'cat selected')
+        const matchingCategory = data.allCategories.find(category => parseInt(category.id) === categorySelected);
         const supportersPerCategory = matchingCategory.supporters.map(supporter => {
             return (
             <div className="supporter-entry">
@@ -55,7 +58,9 @@ const Admin = () => {
     const assignCategorySelected = () => {
         const checkboxes = [otherChecked, organizingChecked, deliveryChecked, handiworkChecked, transportationChecked, foodPrepChecked];
         checkboxes.forEach((checkbox, index) => {
-            checkbox && setCategorySelected(index + 1)
+            if (checkbox) {
+                categorySelected = index + 1;
+            }
         })
     }
 
