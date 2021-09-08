@@ -21,7 +21,6 @@ const Admin = () => {
     const [transportationChecked, setTransportationChecked] = useState(false);
     const [foodPrepChecked, setFoodPrepChecked] = useState(false);
     const [otherChecked, setOtherChecked] = useState(false);
-    // const [categorySelected, setCategorySelected] = useState(0);
     const [categorySupporters, setCategorySupporters] = useState([]);
     const [noSupportersMessage, setNoSupportersMessage] = useState('');
 
@@ -41,7 +40,6 @@ const Admin = () => {
     
     const loadCategorySupporters = () => {
         assignCategorySelected()
-        console.log(categorySelected, 'cat selected')
         const matchingCategory = data.allCategories.find(category => parseInt(category.id) === categorySelected);
         const supportersPerCategory = matchingCategory.supporters.map(supporter => {
             return (
@@ -73,7 +71,6 @@ const Admin = () => {
           <p>error</p>
         )
       } else {
-        console.log('data', data)
         return ( 
         <section className="admin-section">
             <p className="admin-title">View Volunteers by Category:</p>
