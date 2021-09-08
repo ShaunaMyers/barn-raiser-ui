@@ -24,7 +24,7 @@
 .categories-grouped {
   display: flex;
   justify-content: space-around;
-  width: 800px;
+  width: 600px;
 }
 
 .inputs-labels {
