@@ -1,7 +1,7 @@
 import './Need.css'
 import { NavLink } from 'react-router-dom'
 
-const Need = ({ pointOfContact, title, categories, description, date, startTime, endTime, zipCode, supporters, id }) => {
+const Need = ({ title, categories, date, zipCode, id }) => {
 
   const formatCategoriesText = (tag, index) => {
     if (categories.length === 2 && index === 0) return `${tag}  •  `
