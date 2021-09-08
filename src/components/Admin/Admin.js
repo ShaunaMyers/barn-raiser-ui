@@ -75,30 +75,34 @@ const Admin = () => {
         <section className="admin-section">
             <p className="admin-title">View Volunteers by Category:</p>
             <form className="admin-category-form">
-                <div className="inputs-labels">
-                    <input onChange={() => handleCheckBoxes(0)} className="checkboxes" type="checkbox" id="organizingCheck" checked={organizingChecked}/>
-                    <label htmlFor="organizingCheck">Organizing/Event Management</label>
-                </div>
-                <div className="inputs-labels">
-                    <input onChange={() => handleCheckBoxes(1)} className="checkboxes" type="checkbox" id="handiworkCheck" checked={handiworkChecked}/>
-                    <label htmlFor="handiworkCheck">Handiwork</label>
-                </div>
-                <div className="inputs-labels">
-                    <input onChange={() => handleCheckBoxes(2)} className="checkboxes" type="checkbox" id="deliveryCheck" checked={deliveryChecked}/>
-                    <label htmlFor="deliveryCheck">Delivery</label>
-                </div>
-                <div className="inputs-labels">
-                    <input onChange={() => handleCheckBoxes(3)} className="checkboxes" type="checkbox" id="transportationCheck" checked={transportationChecked}/>
-                    <label htmlFor="transportationCheck">Transportation</label>
-                </div>
-                <div className="inputs-labels">
-                    <input onChange={() => handleCheckBoxes(4)} className="checkboxes" type="checkbox" id="foodPrepCheck" checked={foodPrepChecked}/>
-                    <label htmlFor="foodPrepCheck">Food Prep</label>
-                </div>
-                <div className="inputs-labels">
-                    <input onChange={() => handleCheckBoxes(5)} className="checkboxes" type="checkbox" id="otherCheck" checked={otherChecked}/>
-                    <label htmlFor="otherCheck">Other</label>
-                </div>
+                <article className="categories-grouped">
+                    <div className="inputs-labels">
+                        <input onChange={() => handleCheckBoxes(0)} className="checkboxes" type="checkbox" id="organizingCheck" checked={organizingChecked}/>
+                        <label htmlFor="organizingCheck">Organizing/Event Management</label>
+                    </div>
+                    <div className="inputs-labels">
+                        <input onChange={() => handleCheckBoxes(1)} className="checkboxes" type="checkbox" id="handiworkCheck" checked={handiworkChecked}/>
+                        <label htmlFor="handiworkCheck">Handiwork</label>
+                    </div>
+                    <div className="inputs-labels">
+                        <input onChange={() => handleCheckBoxes(2)} className="checkboxes" type="checkbox" id="deliveryCheck" checked={deliveryChecked}/>
+                        <label htmlFor="deliveryCheck">Delivery</label>
+                    </div>
+                </article>
+                <article className="categories-grouped">
+                    <div className="inputs-labels">
+                        <input onChange={() => handleCheckBoxes(3)} className="checkboxes" type="checkbox" id="transportationCheck" checked={transportationChecked}/>
+                        <label htmlFor="transportationCheck">Transportation</label>
+                    </div>
+                    <div className="inputs-labels">
+                        <input onChange={() => handleCheckBoxes(4)} className="checkboxes" type="checkbox" id="foodPrepCheck" checked={foodPrepChecked}/>
+                        <label htmlFor="foodPrepCheck">Food Prep</label>
+                    </div>
+                    <div className="inputs-labels">
+                        <input onChange={() => handleCheckBoxes(5)} className="checkboxes" type="checkbox" id="otherCheck" checked={otherChecked}/>
+                        <label htmlFor="otherCheck">Other</label>
+                    </div>
+                </article>
             </form>
             <button onClick={loadCategorySupporters}className="view-category-button">Search</button>
             {!!categorySelected  && !noSupportersMessage.length &&
