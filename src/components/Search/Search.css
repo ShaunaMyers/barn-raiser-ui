@@ -17,12 +17,17 @@
   min-width: 70%;
 }
 
-.see-all-link {
+.see-all-button {
+  background: none;
   color: blue;
+  font-size: 18px;
+  padding-top: 1%;
   text-decoration: underline;
+  width: 20%;
 }
 
-.see-all-link:hover {
+.see-all-button:hover {
+  background-color: white;
   color: purple;
   cursor: pointer;
 }
