@@ -139,6 +139,13 @@ const NeedDetailPage = ({need_id}) => {
     }
   }
 
+  const formatCategories = (categories) => {
+    const reformattedCategories = categories.map((category, index) => {
+      return <p key={category.id}>{category.tag}</p>
+    })
+    return reformattedCategories;
+  }
+
   if (loading) {
     return(
       <p>Loading...</p>
@@ -159,7 +166,7 @@ const NeedDetailPage = ({need_id}) => {
             <h3>{formatDate(need.startTime)}</h3>
             <h3>{formatTime(need.startTime)} - {formatTime(need.endTime)}</h3>
             <h3>{need.zipCode}</h3>
-            <h3>{need.categories}</h3>
+            <h3>{formatCategories(need.categories)}</h3>
             <h3>Volunteers: {need.supporters.length} / {need.supportersNeeded}</h3>
             <p>{need.description}</p>
           </div>
