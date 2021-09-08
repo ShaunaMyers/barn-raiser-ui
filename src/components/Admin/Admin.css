@@ -24,10 +24,7 @@
 .categories-grouped {
   display: flex;
   justify-content: space-around;
-  /* flex-direction: column; */
-  /* justify-content: center; */
-  /* justify-content: flex-start; */
-  width: 800px;
+  width: 600px;
 }
 
 .inputs-labels {

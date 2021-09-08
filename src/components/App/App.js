@@ -103,7 +103,7 @@ function App() {
                   <Link to="/NeedForm">
                     <button>I Need Help</button>
                   </Link>
-                  <h3 className="header-text">Can You Offer Assistance?</h3>
+                  <h2 className="header-text">Can You Offer Assistance?</h2>
                   <Link to="/NeedList">
                     <button>Give Help</button>
                   </Link>
