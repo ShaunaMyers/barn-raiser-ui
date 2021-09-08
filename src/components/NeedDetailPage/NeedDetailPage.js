@@ -3,7 +3,6 @@ import { useState, useCallback } from 'react';
 import { useQuery, useMutation, gql } from '@apollo/client';
 import { NavLink } from 'react-router-dom';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import { formatDate, formatTime } from '../../utils';
 
 const NeedDetailPage = ({need_id}) => {
   const SINGLE_NEED_QUERY = gql`
@@ -79,6 +78,17 @@ const NeedDetailPage = ({need_id}) => {
     refetchQueries: [{ query: SINGLE_NEED_QUERY }],
   });
 
+  const formatTime = (time) => {
+    const splitTime = time.split(" ")
+    const reformattedTime = splitTime[1]
+    return reformattedTime
+  }
+
+  const formatDate = (date) => {
+    const splitDate = date.split(" ")
+    return splitDate[0]
+  }
+
   const onClick = () => {
     setSignUpStarted(true)
   }
@@ -129,13 +139,6 @@ const NeedDetailPage = ({need_id}) => {
     }
   }
 
-  const formatCategories = (categories) => {
-    const reformattedCategories = categories.map((category, index) => {
-      return <p key={category.id}>{category.tag}</p>
-    })
-    return reformattedCategories;
-  }
-
   if (loading) {
     return(
       <p>Loading...</p>
@@ -148,28 +151,23 @@ const NeedDetailPage = ({need_id}) => {
     const need = data.need;
     return (
       <section>
-        <NavLink to="/NeedList"><button className="back-button">Back</button></NavLink>
-        <article className="need-details">
+        <div className="need-details">
           <div className="detail-text">
+            <NavLink to="/NeedList"><button className="back-button">Back</button></NavLink>
             <h2>{need.title}</h2>
-            <p className="description-text">{need.description}</p>
-            <h3>Date & Time:</h3>
-            <div className="time-container">
-              <p className="date-time">{formatDate(need.startTime)}</p>
-              <p className="date-time">{formatTime(need.startTime)} - {formatTime(need.endTime)}</p>
-            </div>
-            <h3>Zip Code:</h3>
-            <p>{need.zipCode}</p>
-            <h3>Categories:</h3>
-            {formatCategories(need.categories)}
-            <h3>Volunteers:</h3>
-            <p>{need.supporters.length} / {need.supportersNeeded}</p>
+            <h3>{need.id}</h3>
+            <h3>{formatDate(need.startTime)}</h3>
+            <h3>{formatTime(need.startTime)} - {formatTime(need.endTime)}</h3>
+            <h3>{need.zipCode}</h3>
+            <h3>{need.categories}</h3>
+            <h3>Volunteers: {need.supporters.length} / {need.supportersNeeded}</h3>
+            <p>{need.description}</p>
+          </div>
           <div className="volunteer-action-container">
             <a href={`mailto:${need.pointOfContact}?subject=RE:${need.title}`}><button className="contact-button">Contact Requester</button></a>
-            <button className="contact-volunteer-button" onClick={onClick}>Sign Up to Volunteer</button>
+            <button className="volunteer-button" onClick={onClick}>Sign Up to Volunteer</button>
           </div>
-          </div>
-        </article>
+        </div>
         {!!signUpStarted && <div className="sign-up-container">
             <form className="sign-up-form">
               <label for="name">Your Name:</label>
