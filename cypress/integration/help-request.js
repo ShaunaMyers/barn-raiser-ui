@@ -8,7 +8,7 @@ describe('Barn Raiser Help Request Form', () => {
     cy.get('h1').contains('BarnRaiser').click();
     cy.get('h2').contains('Are You Looking for Assistance?').should('be.visible');
     cy.get('button').contains('I Need Help').should('be.visible');
-    cy.get('h3').contains('Can You Offer Assistance?').should('be.visible');
+    cy.get('h2').contains('Can You Offer Assistance?').should('be.visible');
     cy.get('button').contains('Give Help').should('be.visible');
   });
 
