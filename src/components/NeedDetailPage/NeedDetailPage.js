@@ -152,16 +152,18 @@ const NeedDetailPage = ({need_id}) => {
         <article className="need-details">
           <div className="detail-text">
             <h2>{need.title}</h2>
+            <p className="description-text">{need.description}</p>
             <h3>Date & Time:</h3>
             <div className="time-container">
-              <p>{formatDate(need.startTime)}</p>
-              <p>{formatTime(need.startTime)} - {formatTime(need.endTime)}</p>
+              <p className="date-time">{formatDate(need.startTime)}</p>
+              <p className="date-time">{formatTime(need.startTime)} - {formatTime(need.endTime)}</p>
             </div>
             <h3>Zip Code:</h3>
             <p>{need.zipCode}</p>
-            <h3>{formatCategories(need.categories)}</h3>
-            <h3>Volunteers: {need.supporters.length} / {need.supportersNeeded}</h3>
-            <p>{need.description}</p>
+            <h3>Categories:</h3>
+            {formatCategories(need.categories)}
+            <h3>Volunteers:</h3>
+            <p>{need.supporters.length} / {need.supportersNeeded}</p>
           <div className="volunteer-action-container">
             <a href={`mailto:${need.pointOfContact}?subject=RE:${need.title}`}><button className="contact-button">Contact Requester</button></a>
             <button className="contact-volunteer-button" onClick={onClick}>Sign Up to Volunteer</button>
