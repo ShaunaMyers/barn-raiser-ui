@@ -73,7 +73,6 @@ const NeedForm = () => {
     const checkUserInput = ({variables}) => {
       const needKeys = Object.keys(variables)
       let error = false;
-      // let erroredInputs = [];
       needKeys.forEach((key) => {
         if (!variables[key]) {
           error = true;
@@ -114,7 +113,6 @@ const NeedForm = () => {
       setIsError(false)
       setIsSubmitted(false)
       const newNeed = { variables: { pointOfContact, title, description, startTime: formatTimeWithDate(startTime), endTime: formatTimeWithDate(endTime), zipCode, supportersNeeded, categories: findCategoryIds()} };
-      console.log(newNeed, "NEW NEED")
       const isThereAnError = checkUserInput(newNeed)
       if (isThereAnError) {
         setIsError(true);
