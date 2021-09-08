@@ -18,18 +18,8 @@ const Need = ({ pointOfContact, title, categories, description, date, startTime,
     <div className="need-container">
       <div className="need-info">
         <h4>{title}</h4>
-        <p className="bold">Categories:</p>
-        <div className="category-container">{allCategories}</div>
-        <p className="bold">{zipCode}</p>
         <p>{date}</p>
-      </div>
-      <div className="time-container">
-        <p>{startTime} - </p>
-        <p>{endTime}</p>
-      </div>
-      <div className="need-info">
-        <p className="bold">Volunteers Needed:</p>
-        <p>{supporters}</p>
+        <p className="bold">{zipCode}</p>
       </div>
       <div className="button-container">
         <NavLink to={`/Need/${id}`}><button className="more-info-button">More Info</button></NavLink>
