@@ -7,7 +7,7 @@ describe('Barn Raiser Dashboard', () => {
     cy.get('h1').contains('BarnRaiser').should('be.visible');
     cy.get('h2').contains('Are You Looking for Assistance?').should('be.visible');
     cy.get('button').contains('I Need Help').should('be.visible');
-    cy.get('h3').contains('Can You Offer Assistance?').should('be.visible');
+    cy.get('h2').contains('Can You Offer Assistance?').should('be.visible');
     cy.get('button').contains('Give Help').should('be.visible');
   });
 
