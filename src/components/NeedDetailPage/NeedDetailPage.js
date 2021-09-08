@@ -3,6 +3,7 @@ import { useState, useCallback } from 'react';
 import { useQuery, useMutation, gql } from '@apollo/client';
 import { NavLink } from 'react-router-dom';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import { formatDate, formatTime } from '../../utils';
 
 const NeedDetailPage = ({need_id}) => {
   const SINGLE_NEED_QUERY = gql`
@@ -77,17 +78,6 @@ const NeedDetailPage = ({need_id}) => {
   const [addSupporter, { supporterLoading, supporterError }] = useMutation(ADD_SUPPORTER, {
     refetchQueries: [{ query: SINGLE_NEED_QUERY }],
   });
-
-  const formatTime = (time) => {
-    const splitTime = time.split(" ")
-    const reformattedTime = splitTime[1]
-    return reformattedTime
-  }
-
-  const formatDate = (date) => {
-    const splitDate = date.split(" ")
-    return splitDate[0]
-  }
 
   const onClick = () => {
     setSignUpStarted(true)
