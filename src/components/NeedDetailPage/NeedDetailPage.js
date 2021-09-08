@@ -158,13 +158,15 @@ const NeedDetailPage = ({need_id}) => {
     const need = data.need;
     return (
       <section>
-        <div className="need-details">
-          <div className="detail-text">
+        <article className="need-details">
             <NavLink to="/NeedList"><button className="back-button">Back</button></NavLink>
+          <div className="detail-text">
             <h2>{need.title}</h2>
-            <h3>{need.id}</h3>
-            <h3>{formatDate(need.startTime)}</h3>
-            <h3>{formatTime(need.startTime)} - {formatTime(need.endTime)}</h3>
+            <h3>Date & Time:</h3>
+            <div className="time-container">
+              <p>{formatDate(need.startTime)}</p>
+              <p>{formatTime(need.startTime)} - {formatTime(need.endTime)}</p>
+            </div>
             <h3>{need.zipCode}</h3>
             <h3>{formatCategories(need.categories)}</h3>
             <h3>Volunteers: {need.supporters.length} / {need.supportersNeeded}</h3>
@@ -174,7 +176,7 @@ const NeedDetailPage = ({need_id}) => {
             <a href={`mailto:${need.pointOfContact}?subject=RE:${need.title}`}><button className="contact-button">Contact Requester</button></a>
             <button className="volunteer-button" onClick={onClick}>Sign Up to Volunteer</button>
           </div>
-        </div>
+        </article>
         {!!signUpStarted && <div className="sign-up-container">
             <form className="sign-up-form">
               <label for="name">Your Name:</label>
