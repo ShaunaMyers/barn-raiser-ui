@@ -2,6 +2,7 @@ import './NeedDetailPage.css'
 import { useState, useCallback } from 'react';
 import { useQuery, useMutation, gql } from '@apollo/client';
 import { NavLink } from 'react-router-dom';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const NeedDetailPage = ({need_id}) => {
   const SINGLE_NEED_QUERY = gql`
@@ -28,8 +29,6 @@ const NeedDetailPage = ({need_id}) => {
       }
     }
   }`;
-
-// createSupporter($name: String!, $email: String!, $id: ID!)
 
   const ADD_SUPPORTER = gql`
     mutation createSupporter($name: String!, $email: String!, $need: ID!) {
@@ -101,18 +100,28 @@ const NeedDetailPage = ({need_id}) => {
   }
 
   const clearInputs = () => {
+    setVolunteerName('')
+    setVolunteerEmail('')
     setSignUpStarted(false)
   }
 
   const checkIfError = (supporter) => {
-    return false;
+    let error = false;
+    if (!supporter.variables.name || !supporter.variables.email) {
+      console.log(supporter.name)
+      console.log(supporter.email)
+      error = true;
+    } else if (!supporter.variables.email.includes('@') || !supporter.variables.email.includes('.')) {
+      error = true;
+    }
+    console.log(error);
+    return error;
   }
 
   const handleAddSupporter = (e) => {
     e.preventDefault()
     setIsError(false)
     setIsVolunteered(false)
-    //NOTE: NOT SURE IF CORRECT FORMAT
     const newSupporter = { variables: {
 		      name: volunteerName,
 		      email: volunteerEmail,
@@ -121,6 +130,7 @@ const NeedDetailPage = ({need_id}) => {
     const isThereAnError = checkIfError(newSupporter);
     if (isThereAnError) {
       setIsError(true);
+      clearInputs();
       return false;
     } else {
       addSupporter(newSupporter);
@@ -167,6 +177,7 @@ const NeedDetailPage = ({need_id}) => {
               <button onClick={handleAddSupporter} className="submit-button">Sign Up</button>
             </form>
           </div>}
+        {!!isError && <ErrorMessage errorMessage="Sorry, we weren't able to record your sign up."/>}
         {!!isVolunteered && <div className="signed-up-message">
             <h2>Thank you for signing up to help!</h2>
           </div>}

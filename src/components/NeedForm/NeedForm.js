@@ -73,7 +73,6 @@ const NeedForm = () => {
     const checkUserInput = ({variables}) => {
       const needKeys = Object.keys(variables)
       let error = false;
-      // let erroredInputs = [];
       needKeys.forEach((key) => {
         if (!variables[key]) {
           error = true;
