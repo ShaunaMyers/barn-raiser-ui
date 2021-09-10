@@ -44,10 +44,16 @@ const Admin = () => {
         const removeDuplicates = [...new Set(matchingCategory.supporters)]
         const supportersPerCategory = removeDuplicates.map(supporter => {
             return (
-            <div key={Math.random()} className="supporter-entry">
-                <p>Name: {supporter.name}</p>
-                <p>E-mail: {supporter.email}</p>
-            </div>
+            <section key={Math.random()} className="supporter-entry">
+                <div className="supporter-details">
+                    <p className="supporter-titles">Name: </p>
+                    <p>{supporter.name}</p>
+                </div>
+                <div className="supporter-details">
+                    <p className="supporter-titles">E-mail: </p>
+                    <p>{supporter.email}</p>
+                </div>
+            </section>
             )
         })
         supportersPerCategory.length ? setCategorySupporters(supportersPerCategory) :
