@@ -41,9 +41,10 @@ const Admin = () => {
     const loadCategorySupporters = () => {
         assignCategorySelected()
         const matchingCategory = data.allCategories.find(category => parseInt(category.id) === categorySelected);
+        console.log(matchingCategory, 'matching cat')
         const supportersPerCategory = matchingCategory.supporters.map(supporter => {
             return (
-            <div className="supporter-entry">
+            <div key={Math.random()} className="supporter-entry">
                 <p>Name: {supporter.name}</p>
                 <p>E-mail: {supporter.email}</p>
             </div>
@@ -57,7 +58,7 @@ const Admin = () => {
         const checkboxes = [otherChecked, organizingChecked, deliveryChecked, handiworkChecked, transportationChecked, foodPrepChecked];
         checkboxes.forEach((checkbox, index) => {
             if (checkbox) {
-                categorySelected = index + 1;
+                categorySelected = (index + 1);
             }
         })
     }
@@ -105,13 +106,15 @@ const Admin = () => {
                 </article>
             </form>
             <button onClick={loadCategorySupporters}className="view-category-button">Search</button>
-            {!!categorySelected  && !noSupportersMessage.length &&
-            <article>
-                {categorySupporters} 
-            </article> 
+            {!!categorySupporters.length  && !noSupportersMessage.length &&
+                <article>
+                    {categorySupporters} 
+                </article> 
             }
-            {!!noSupportersMessage.length ?
-                <p className="admin-text">{noSupportersMessage}</p> :
+            {!!noSupportersMessage.length && 
+                <p className="admin-text">{noSupportersMessage}</p>
+            }
+            {!noSupportersMessage.length && !categorySupporters.length &&
                 <p className="admin-text">Please select a category and search to view volunteers</p>
             }
         </section>
