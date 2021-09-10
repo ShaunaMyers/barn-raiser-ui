@@ -41,8 +41,8 @@ const Admin = () => {
     const loadCategorySupporters = () => {
         assignCategorySelected()
         const matchingCategory = data.allCategories.find(category => parseInt(category.id) === categorySelected);
-        console.log(matchingCategory, 'matching cat')
-        const supportersPerCategory = matchingCategory.supporters.map(supporter => {
+        const removeDuplicates = [...new Set(matchingCategory.supporters)]
+        const supportersPerCategory = removeDuplicates.map(supporter => {
             return (
             <div key={Math.random()} className="supporter-entry">
                 <p>Name: {supporter.name}</p>
