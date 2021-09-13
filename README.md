@@ -53,30 +53,21 @@ To solidify and demonstrate the understanding of:
 
 ## Functionality 
 
-#### View Home Page
-- A user may choose to ask for help or give help<br>
+#### View Home Page & View a List of Needs
+- A user may view home page and click on a button to give help to view a list of needs<br>
 
+![BarnRaiser1](https://user-images.githubusercontent.com/74690897/133149681-d403570d-cc39-4682-a0e4-9ca1bf107aea.gif)
 
 
 #### Create a new need
 - The user may fill out the need form to ask for help<br>
 
 
-
-#### View a list of needs
-- The user may peruse a list of needs<br>
-
-
 #### View a single need
 - A user may click on a need to view it in greater detail
 
-
-#### Sign up for a need
-- A user may sign up to volunteer for a particular need
-
-
-#### Mobile View/Responsive
-- Site is responsive and will change layouts across desktop, tablet, and phone screens<br>
+### Volunteer for a need
+- A user may volunteer for a particular need
 
 
 ## Future Additions
