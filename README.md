@@ -61,13 +61,21 @@ To solidify and demonstrate the understanding of:
 
 #### Create a new need
 - The user may fill out the need form to ask for help<br>
+![BarnRaiser2](https://user-images.githubusercontent.com/74690897/133356567-38d4f415-106a-4e00-bda2-230c5f990d04.gif)
 
 
 #### View a single need
 - A user may click on a need to view it in greater detail
+![BarnRaiser3](https://user-images.githubusercontent.com/74690897/133356729-88efec84-bc4d-4bd2-959f-38c46cd8322b.gif)
+
+### E-mail point of contact to ask for more information
+- A user make choose to contact the requester to ask for more information
+![BarnRaiser4](https://user-images.githubusercontent.com/74690897/133356969-3628497e-acbf-4953-8281-b4703e69b564.gif)
+
 
 ### Volunteer for a need
 - A user may volunteer for a particular need
+![BarnRaiser5](https://user-images.githubusercontent.com/74690897/133357401-cee1c3ea-3901-45c4-863f-8d0726273561.gif)
 
 
 ## Future Additions
@@ -82,9 +90,14 @@ If you would like to contribute, please fork this repository and clone it down t
 
 
 ## Contributors
-### Authors
+
+#### Frontend
+
 - [Dean Cook](https://github.com/novaraptur)
 - [Shauna Myers](https://github.com/ShaunaMyers)
+
+#### Backend
+
 - [Aliya Merali](https://github.com/aliyamerali)
 - [Andrew Shafer](https://github.com/Aphilosopher30)
 
