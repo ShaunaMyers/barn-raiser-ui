@@ -56,25 +56,29 @@ To solidify and demonstrate the understanding of:
 #### View Home Page & View a List of Needs
 - A user may view home page and click on a button to give help to view a list of needs<br>
 
-![BarnRaiser1](https://user-images.githubusercontent.com/74690897/133149681-d403570d-cc39-4682-a0e4-9ca1bf107aea.gif)
+![BarnRaiser](https://user-images.githubusercontent.com/74690897/133487215-fe377fcc-f951-4fe9-97fe-a95f2345a0d7.gif)
 
 
 #### Create a new need
 - The user may fill out the need form to ask for help<br>
+
 ![BarnRaiser2](https://user-images.githubusercontent.com/74690897/133356567-38d4f415-106a-4e00-bda2-230c5f990d04.gif)
 
 
 #### View a single need
-- A user may click on a need to view it in greater detail
+- A user may click on a need to view it in greater detail<br>
+
 ![BarnRaiser3](https://user-images.githubusercontent.com/74690897/133356729-88efec84-bc4d-4bd2-959f-38c46cd8322b.gif)
 
 ### E-mail point of contact to ask for more information
-- A user make choose to contact the requester to ask for more information
+- A user make choose to contact the requester to ask for more information<br>
+
 ![BarnRaiser4](https://user-images.githubusercontent.com/74690897/133356969-3628497e-acbf-4953-8281-b4703e69b564.gif)
 
 
 ### Volunteer for a need
-- A user may volunteer for a particular need
+- A user may volunteer for a particular need<br>
+
 ![BarnRaiser5](https://user-images.githubusercontent.com/74690897/133357401-cee1c3ea-3901-45c4-863f-8d0726273561.gif)
 
 
@@ -93,13 +97,13 @@ If you would like to contribute, please fork this repository and clone it down t
 
 #### Frontend
 
-- [Dean Cook](https://github.com/novaraptur)
-- [Shauna Myers](https://github.com/ShaunaMyers)
+- [Dean Cook](https://github.com/novaraptur) | [Linkedin](https://www.linkedin.com/in/dean-r-cook/)
+- [Shauna Myers](https://github.com/ShaunaMyers) | [Linkedin](https://www.linkedin.com/in/shauna-myers/)
 
 #### Backend
 
-- [Aliya Merali](https://github.com/aliyamerali)
-- [Andrew Shafer](https://github.com/Aphilosopher30)
+- [Aliya Merali](https://github.com/aliyamerali) | [Linkedin](https://www.linkedin.com/in/aliyamerali/)
+- [Andrew Shafer](https://github.com/Aphilosopher30) | [Linkedin](https://www.linkedin.com/in/andrew-shafer-0631ab20a/)
 
 **************************************************************************
 
